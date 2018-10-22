@@ -1,0 +1,64 @@
+ul {
+  margin-top: 4px;
+  margin-left: 22px;
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+li {
+  margin-left: 8px;
+  padding: 4px 6px 0 8px;
+}
+
+ul.projects {
+  margin-left: 2px;
+}
+
+a.project-title {
+  font-size: 14px;
+  font-weight: bold;
+
+  text-decoration: none;
+  color: cornflowerblue;
+}
+
+a.project-title:hover,
+a.project-title:visited:hover {
+  text-decoration: underline; 
+  color: darkorange;
+}
+
+a.project-title:visited {
+  text-decoration: none;
+  color: darkblue;
+}
+
+.project-notes {
+  margin:0 0 10px 0;
+  padding-top:0;
+  font-size: 13px;
+  font-style: italic;
+  color: #808080;
+}
+
+
+.project-detail {
+  margin: 4px 2px 6px 2px;
+  line-height: 1.4em; 
+}
+
+.project-technology {
+  position: relative;
+}
+
+.project-technology .label {
+  /* fixes bootstrap's label no dynamic wrap */
+  display: inline-block !important;
+  margin: 2px 6px 10px 0;
+
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  box-shadow: 0 0 4px rgba(50,50,50,.5);
+  
+}

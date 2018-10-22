@@ -1,0 +1,28 @@
+<ul *ngIf='projects && projects.length' class="list-group projects">
+  <li class="list-group-item" *ngFor="let project of filteredProjects">
+    <i class="{{project.fa}}" style="margin-right:6px;"></i>
+    <a href="{{project.href}}"
+       (click)='onProjectClick(project.name)'  
+       target="_blank"
+       class="project-title">
+        {{project.title}}
+    </a>
+
+    <p *ngIf='showDetail'
+       class='project-detail' >
+      {{project.description}}
+    </p>
+
+    <p *ngIf="showDetail"
+       class="project-notes">
+        {{project.notes}}
+    </p>
+    
+    <div *ngIf="showTech" class="project-technology">
+      <span class="badge badge-secondary label" 
+            *ngFor="let tech of project.technology">
+        {{ tech | normalizeTechTerms }}
+      </span>
+    </div>
+  </li>
+</ul>
