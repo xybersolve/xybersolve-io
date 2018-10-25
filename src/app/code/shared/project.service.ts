@@ -5,8 +5,6 @@ import { catchError, tap } from 'rxjs/operators';
 
 import { IProject } from './project.model';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,10 +15,11 @@ export class ProjectService {
 
   getProjects(): Observable<IProject[]> {
     return this.http.get<IProject[]>(this.projectUrl).pipe(
-      tap(data => console.log(JSON.stringify(data))),
+      tap(data => console.log(`projects: ${data.length}`)),
       catchError(this.handleError)
     );
   }
+
 
   private handleError(err: HttpErrorResponse){
     let errorMessage = ''

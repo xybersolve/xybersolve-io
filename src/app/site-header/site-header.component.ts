@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteHeaderComponent implements OnInit {
 
-  pageTitle = 'xybersolve'
+  brandTitle = 'xybersolve.io'
   
   constructor() { }
 

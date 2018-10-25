@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
-import { IProject } from './shared/project.model';
-import { ProjectService } from './shared/project.service';
+import { IProject } from '../shared/project.model';
+import { ProjectService } from '../shared/project.service';
 
 @Component({
   selector: 'xs-code-list',

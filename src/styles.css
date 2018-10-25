@@ -3,8 +3,71 @@
 /*@import "~font-awesome/css/font-awesome.min.css";*/
 
 /*
-   Common shared CSS 
+@import url(https://fonts.googleapis.com/css?family=Cardo:700|Lato:400,400italic,700);
+@header-font-family: 'Cardo', Georgia, Times, serif;
+@header-font-size-base: 14px;
+@header-font-weight: bold;
+@header-color: #333;
+
+@body-font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@body-font-size-base: 15px;
+@body-color: #222222;
 */
+
+/*
+   Common shared CSS 
+
+padding-top: @margin-fix-toolbar; 
+*/
+
+body {
+  min-height: 600px;
+  font-family:'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  color: #222;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family:'Cardo', Georgia, Times, serif;
+  color: #333;
+  padding:0;
+  line-height: 1;
+}
+/* 
+@header-font-size-base: 14px; 
+@body-font-size-base: 15px;
+@margin-bottom-base: 1px;
+@margin-top-base: 4px;
+@margin-fix-toolbar: 70px;
+*/
+h1 {
+  font-size: 22px;
+  margin: 20 0 7 0;
+}
+h2 {
+  font-size: 20px;
+  margin: 18 0 7 0;
+}
+h3 {
+  font-size: 18px;
+  margin: 18 0 7 0;
+}
+h4 {
+  font-size: 17px;
+  margin: 16 0 5 0;
+}
+h5 {
+  font-size: 16px;
+  margin: 16 0 5 0;
+}
+h6 {
+  font-size: 15px;
+  margin: 16 0 5 0;
+}
+
+.leading-row {
+  margin-top: 20px;
+}
 
 /* bootstrap overrides */
 li, dd {
@@ -165,4 +228,19 @@ ul.ornamented {
   list-style-type: none;
   margin-left: 4px;
   padding-left: 2px;
+}
+
+.navbar-tweaks {
+  margin-bottom: 24px;
+}
+
+/*
+  Image Styling
+*/
+.img-rounded-corners {
+  border-radius:25%;
+}
+
+.img-circle {
+  border-radius:50%;
 }
