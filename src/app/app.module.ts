@@ -16,6 +16,7 @@ import { PhotographyGalleryComponent } from './photography/gallery/photography-g
 import { ContactComponent } from './contact/contact.component';
 // Pipes 
 import { NormalizeTechTermsPipe } from './shared/pipes/normalize-tech-terms.pipe';
+import { AdminComponent } from './admin/admin.component';
  
 
 
@@ -30,7 +31,8 @@ import { NormalizeTechTermsPipe } from './shared/pipes/normalize-tech-terms.pipe
     PhotographyDetailComponent,
     PhotographyGalleryComponent,    
     NormalizeTechTermsPipe,
-    ContactComponent
+    ContactComponent,
+    AdminComponent
     
   ],
   imports: [

@@ -1,18 +1,19 @@
-<div class='card' *ngIf='image'>
-  <div class='card-header'>
-    {{pageTitle}}
-  </div>  
-  <div class='card-sub-header'>
-    {{image.title}}
+<div class='card text-center detail-outer' *ngIf='image'>
+   <div class="back-button-holder">
+    <button class='btn btn-link float-left detail-back-button'
+            (click)='onBack()'>
+      <i class='fa fa-chevron-left fa-2x' style="color:#ccc;"></i>  
+  </button>
   </div>
-  <div class='card-content'>
-    {{image.title}}
+  <div class="img-container">
+      <img class="img-fluid img-detail text-center" src="{{basePath}}/{{image.file}}" >
   </div>
-  <div>
-    <button class='btn btn-outline-secondary'
-            (click)='onBack()'
-            style='width:80px;'>
-    <i class='fa fa-chevron-left'></i>  
-    </button>
+
+  <div class="card-body">
+    <h2 style="color:#bbb;text-shadow:1px 1px 5px #222">{{image.title}}</h2>
+    <p style="color:#eee;text-shadow:0 0 10px #444">
+      {{image.note}}
+    </p>
+  
   </div>
 </div>

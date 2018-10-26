@@ -1,45 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+    Global Styles
+
+*/
 @import "~bootstrap/dist/css/bootstrap.min.css";
 /*@import "~font-awesome/css/font-awesome.min.css";*/
-
-/*
-@import url(https://fonts.googleapis.com/css?family=Cardo:700|Lato:400,400italic,700);
-@header-font-family: 'Cardo', Georgia, Times, serif;
-@header-font-size-base: 14px;
-@header-font-weight: bold;
-@header-color: #333;
-
-@body-font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@body-font-size-base: 15px;
-@body-color: #222222;
-*/
-
-/*
-   Common shared CSS 
-
-padding-top: @margin-fix-toolbar; 
-*/
 
 body {
   min-height: 600px;
   font-family:'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
   color: #222;
+  background-color: #fefefe;
 }
 
 h1,h2,h3,h4,h5,h6 {
   font-family:'Cardo', Georgia, Times, serif;
-  color: #333;
+  color: #222;
+  color: rgb(63, 124, 236);
   padding:0;
   line-height: 1;
 }
-/* 
-@header-font-size-base: 14px; 
-@body-font-size-base: 15px;
-@margin-bottom-base: 1px;
-@margin-top-base: 4px;
-@margin-fix-toolbar: 70px;
-*/
+
+h1,h2,h3,h4,h5,h6 {
+  font-family:'Cardo', Georgia, Times, serif;
+  color: #222;
+  color: rgb(21, 89, 214);
+  padding:0;
+  line-height: 1;
+}
+
+
 h1 {
   font-size: 22px;
   margin: 20 0 7 0;
@@ -115,7 +105,7 @@ ul.hide-bullet {
   list-style-type: none;
 }
 
-/*
+/* Legend
  ❖ "\2756" black diamonds
  ※ "\203B" reference mark
  ❧ "\2767" floral heart bullet
@@ -230,9 +220,6 @@ ul.ornamented {
   padding-left: 2px;
 }
 
-.navbar-tweaks {
-  margin-bottom: 24px;
-}
 
 /*
   Image Styling

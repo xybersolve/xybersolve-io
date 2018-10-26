@@ -1,0 +1,13 @@
+a.brand-title {
+  margin-top:0;  
+  margin-bottom:0;
+  padding-bottom:0;
+  padding-top:0;
+  font-weight: normal;
+  color: #222;
+  text-shadow: 0 0 10px white;
+}
+
+.navbar-tweaks {
+  margin-bottom: 24px;
+}
