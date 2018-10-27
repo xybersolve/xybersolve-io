@@ -10,7 +10,9 @@ import { IProject } from './project.model';
 })
 export class ProjectService {
   private projectUrl = 'src/api/code/projects.json';
-   
+  
+  techterms: string[] = [];
+  
   constructor(private http: HttpClient) { }
 
   getProjects(): Observable<IProject[]> {
@@ -20,6 +22,10 @@ export class ProjectService {
     );
   }
 
+  // TODO: Add search by tech term, pull tech terms from project object array  
+  // getTechTerms(): void {
+  //   this.getProjects().subscribe()
+  // }
 
   private handleError(err: HttpErrorResponse){
     let errorMessage = ''
