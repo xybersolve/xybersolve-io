@@ -27,6 +27,12 @@ export class PhotographyService {
     ) 
   } 
 
+  getImageIds(): Observable<any[] | undefined> {
+    return this.getImages().pipe(
+      map((image:IImage)  => image.id),
+    )
+  }
+
   private handleError(err: HttpErrorResponse) {
     let errMessage = ''
     if(err.error instanceof ErrorEvent) {
