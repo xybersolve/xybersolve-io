@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+//import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 // Core Components
@@ -16,6 +16,7 @@ import { AdminComponent } from './admin/admin.component';
 import { CodeModule } from './code/code.module';
 import { PhotographyModule } from './photography/photography.module';
 import { AppRoutingModule } from './app-routing.module';
+//import { NotFoundComponent } from './not-found.component';
  
 
 @NgModule({
@@ -24,21 +25,12 @@ import { AppRoutingModule } from './app-routing.module';
     NavHeaderComponent,
     HomeComponent,  
     ContactComponent,
-    AdminComponent
+    AdminComponent,
+    //NotFoundComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      { path: 'home', component: HomeComponent },
-      // { path: 'photography', component: PhotographyComponent },
-      // { path: 'photography/:id', 
-      //   canActivate: [ PhotographyDetailGuard ],
-      //   component: PhotographyDetailComponent },
-      { path: 'contact', component: ContactComponent },
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: '**', redirectTo: 'home', pathMatch: 'full' }
-    ]),
     CodeModule,
     PhotographyModule,
     AppRoutingModule,
@@ -47,6 +39,4 @@ import { AppRoutingModule } from './app-routing.module';
   bootstrap: [AppComponent]
 })
 
-export class AppModule {
-
-}
+export class AppModule {}

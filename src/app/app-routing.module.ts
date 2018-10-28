@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+// Flat page components 
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 //import { AdminComponent } from './admin/admin.component';
