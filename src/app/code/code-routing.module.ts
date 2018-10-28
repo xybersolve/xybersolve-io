@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CodeComponent } from './code.component'
 
-const codeRoutes: Routes = [
+const routes: Routes = [
   { 
     path: 'code', 
     component: CodeComponent 
@@ -11,7 +11,7 @@ const codeRoutes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forChild(codeRoutes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class CodeRoutingModule {} 

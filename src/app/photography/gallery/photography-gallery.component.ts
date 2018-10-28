@@ -4,7 +4,7 @@ import { IImage } from '../shared/images.model'
 import { PhotographyService } from '../shared/photography.service'
 
 @Component({
-  selector: 'xs-photo-gallery',
+  selector: 'xs-photography-gallery',
   templateUrl: './photography-gallery.component.html',
   styleUrls: ['./photography-gallery.component.css']
 })
