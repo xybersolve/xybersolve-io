@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { SiteHeaderComponent } from './nav-header/nav-header.component';
+import { NavHeaderComponent } from './nav-header/nav-header.component';
 // Page Components 
 import { HomeComponent } from './home/home.component';
 // import { CodeComponent } from './code/code.component';
@@ -24,7 +24,7 @@ import { CodeModule } from './code/code.module';
 @NgModule({
   declarations: [
     AppComponent,
-    SiteHeaderComponent,
+    NavHeaderComponent,
     HomeComponent,  
     PhotographyComponent,
     PhotographyDetailComponent,

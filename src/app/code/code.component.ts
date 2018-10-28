@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 @Component({
-  //selector: 'xs-code',
   templateUrl: './code.component.html',
   styleUrls: ['./code.component.css']
 })
