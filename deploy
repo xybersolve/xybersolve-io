@@ -1,0 +1,361 @@
+#!/usr/bin/env bash
+# ================================================================
+# -*- mode: bash -*-
+# vi: set ft=sh
+# ****************************************************************
+#
+# DESCRIPTION
+#    S3 Static Website Deployment
+#
+# SYNTAX & EXAMPLES
+#    See 'SYNTAX' (below)
+#
+# ----------------------------------------------------------------
+# IMPLEMENTATION
+#    version         script 0.0.5
+#    author          Greg Milligan
+#    copyright       Copyright (c) 2018 http://xybersolve.io
+#    license         GNU General Public License
+#
+# ================================================================
+#  DEBUG OPTION
+#    set -n  # Uncomment to check your syntax, without execution.
+#    set -x  # Uncomment to debug this shell script
+#
+# ---------------------------------------------------------------
+#
+# TODO:
+# ****************************************************************
+
+
+# ---------------------------------------
+# CONFIGFURATION
+# ---------------------------------------
+# strict environment
+set -o errexit  # exit on command error status
+set -o nounset  # no unreadonlyd variables
+set -o pipefail # failr on pipe failures
+trap 'echo "Aborting due to errexit on line $LINENO. Exit code: ${?}" >&2' ERR
+
+# ---------------------------------------
+# GLOBAL VARIABLES
+# ---------------------------------------
+# booleans
+declare -ir TRUE=1
+declare -ir FALSE=0
+
+# script info
+declare -r PROGNAME="$(basename ${0})"
+declare -r VERSION=0.0.1
+declare -r SUBJECT=""
+declare -r KEYS=""
+declare -ri MIN_ARG_COUNT=1
+declare -r SYNTAX=$(cat <<EOF
+
+    Script: ${PROGNAME}
+    Purpose: Manage content on S3
+    Usage: ${PROGNAME} [options]
+
+    Options:
+      --help:  help and usage
+      --version: show version info
+
+      Actions:
+        --sync=<directory>: Synchronize files between project and S3
+        --list: List all the content
+        --delete-all: Delete all content
+        --remove: Remove site bucket
+
+        Un-refactored  
+        --upload: Upload all pertinent files and directories
+        --updoad-file=<file>: TODO
+        --upload-dir=<directory>: Upload a given directory
+        --upload-res*: Upload newest resume
+        --delete-file=<file>: TODO
+        --delete-dir=<directory>: Delete a directory
+        
+        --delete-logs: Delete all logs
+        --remove-log: Remove the log bucket
+        
+        --size: show sizes
+
+      Flags:
+        --pwd: use current directory for uploads
+
+
+EOF
+)
+# files & directories
+declare -r SCRIPT_DIR="$( dirname ${0} )"
+declare -r CONF_FILE="${SCRIPT_DIR}/deploy.conf.sh"
+
+# actions (refactored)
+declare -i SYNC=${FALSE}
+declare -i LIST=${FALSE}
+declare -i DELETE_ALL=${FALSE}
+declare -i OPEN=${FALSE} 
+
+
+declare -i UPLOAD=${FALSE}
+declare -i UPLOAD_DIR=${FALSE}
+declare -i UPLOAD_FILE=${FALSE}
+declare -i UPLOAD_RESUME=${FALSE}
+declare -i UPLOAD_LETTER=${FALSE}
+declare -i DELETE=${FALSE}
+
+declare -i DELETE_DIR=${FALSE}
+declare -i DELETE_LOGS=${FALSE}
+declare -i REMOVE_LOG=${FALSE}
+
+declare -i SIZE=${FALSE}
+
+# flags
+declare -i DRY_RUN=${FALSE}
+declare -i USE_PWD=${FALSE}
+
+# script globals
+declare DIRECTORY=''
+declare FILE=''
+
+# colors
+declare _xsRESET='\e[0m'
+declare _xsDEFAULT='\e[39m'
+declare _xsRED='\e[31m'
+declare _xsGREEN='\e[32m'
+declare _xsYELLOW='\e[33m'
+declare _xsBLUE='\e[34m'
+declare _xsMAGENTA='\e[35m'
+declare _xsCYAN='\e[36m'
+declare _xsLIGHTGRAY='\e[37m'
+declare _xsDARKGRAY='\e[90m'
+declare _xsLIGHTRED='\e[91m'
+declare _xsLIGHTGREEN='\e[92m'
+declare _xsLIGHTYELLOW='\e[93m'
+declare _xsLIGHTBLUE='\e[94m'
+declare _xsLIGHTMAGENTA='\e[95m'
+declare _xsLIGHTCYAN='\e[96m'
+declare _xsWHITE='\e[97m'
+# ---------------------------------------
+# COMMON FUNCTIONS
+# ---------------------------------------
+usage() {
+  printf "${_xsYELLOW}%s${_xsRESET}\n" "${SYNTAX}"
+}
+
+error() {
+  printf "\n${_xsLIGHTRED}%s${_xsRESET}\n" "Error: ${1}"
+}
+
+die() {
+  error "${1}"
+  usage
+  printf "\n\n"
+  exit "${2:-1}"
+}
+
+show_version() {
+  printf "\n\n%s  %s\n\n\n" "${PROGNAME}" "${VERSION}"
+  exit 0
+}
+
+show_help() {
+  printf "\n\n${_xsYELLOW}"
+  usage
+  printf "${_xsRESET}\n\n"
+  exit 0
+}
+
+# ---------------------------------------
+# MAIN ROUTINES
+# ---------------------------------------
+source "${CONF_FILE}" \
+  || die "Unable to open configuration file: ${CONF_FILE}" 1
+
+# 
+# Refactor 
+#
+# BEGIN WORKING ROUTINES
+# * primary working routines for angular v6 deployment
+__sync() {
+  aws s3 --profile "${AWS_PROFILE}" sync "${SOURCE_DIR}" s3://${SITE_BUCKET}
+}
+
+__list() {
+  aws s3 --profile "${AWS_PROFILE}" ls s3://${SITE_BUCKET}/
+}
+
+__delete_all() {
+  aws s3 --profile "${AWS_PROFILE}" rm s3://${SITE_BUCKET}/ --recursive
+}
+
+__remove() {
+  aws s3 --profile "${AWS_PROFILE}" rb s3://${SITE_BUCKET} 
+}
+
+__open() {
+  # for MacOSX
+  open "${SITE_ENDPOINT}"
+}
+
+# END WORKING ROUTINES
+#
+#  Below are reference routines, will be moved up as they are refactored
+#
+__upload() {
+  for file in "${FILES[@]}"; do
+    printf "Copying file: %s\n" "${file}"
+    aws s3 --profile "${AWS_PROFILE}" cp ${SITE_DIR}/${file} s3://${SITE_BUCKET}
+  done
+
+  for dir in "${DIRS[@]}"; do
+    printf "Copying directory: %s\n" "${dir}"
+    aws s3 --profile "${AWS_PROFILE}" cp ${SITE_DIR}/${dir}/ s3://${SITE_BUCKET}/${dir} \
+      --recursive \
+      --exclude '*DS_Store*'
+  done
+}
+
+
+__upload_dir() {
+  [[ -z "${DIRECTORY}" ]] && die "Directory argument is required" 2
+
+  aws s3 x --profile "${AWS_PROFILE}" cp "${SITE_DIR}/${DIRECTORY}/" s3://${SITE_BUCKET}/${DIRECTORY} \
+    --recursive \
+    --exclude '*DS_Store*'
+}
+
+__upload_file() {
+  [[ -f "${DIRECTORY}" ]] && die "Directory argument is required" 2
+
+  aws s3 --profile "${AWS_PROFILE}" cp "${SITE_DIR}/${FILE}" s3://${SITE_BUCKET}/${FILE}
+}
+
+__delete_dir() {
+  aws s3 --profile "${AWS_PROFILE}" rm s3://${DIRECTORY}/ --recursive
+}
+
+__delete_logs() {
+  aws s3 --profile "${AWS_PROFILE}" rm s3://${LOG_BUCKET}/ --recursive
+}
+
+__remove_log() {
+  #__delete_logs
+  aws s3 --profile "${AWS_PROFILE}" rb s3://${LOG_BUCKET} --force
+}
+
+
+__size() {
+  aws s3api list-objects \
+    --bucket ${SITE_BUCKET} \
+    --output text \
+    --query "[sum(Contents[].Size), length(Contents[])]"
+}
+
+__check_aws() {
+  which aws &>/dev/null || die "AWS was not available, run virtualenv?" 2
+}
+
+__upload_resume() {
+  [[ -f "${RESUME_PATH}" ]] || die "Resume was not found: ${RESUME_PATH}." 4
+  aws s3 --profile "${AWS_PROFILE}" cp "${RESUME_PATH}" s3://${SITE_BUCKET}/documents/${RESUME_FILE}
+}
+
+__upload_letter() {
+  [[ -f "${LETTER_PATH}" ]] || die "Cover letter was not found: ${LETTER_PATH}." 5
+  aws s3 --profile "${AWS_PROFILE}" cp "${LETTER_PATH}" s3://${SITE_BUCKET}/documents/${LETTER_FILE}
+}
+
+__open_resume() {
+  local dt=$( date +'%Y%m%d')
+  local tmp_file="/tmp/resume_${dt}"
+  #echo $tmp_file
+  aws s3  --profile "${AWS_PROFILE}" cp s3://${SITE_BUCKET}/documents/${RESUME_FILE} "${tmp_file}"
+  open -a 'Pages' "${tmp_file}"
+
+}
+
+__get_opts() {
+  while (( $# > 0 )); do
+    local arg="${1}"; shift;
+    case ${arg} in
+      # BEGIN WORKING
+      --help)    show_help                   ;;
+      --version) show_version                ;;
+      --sync*)            SYNC=${TRUE}
+        [[ ${arg} =~ '=' ]] && DIRECTORY="${arg#*=}"
+        ;;
+      --list)            LIST=${TRUE}        ;;  
+      --open)            OPEN=${TRUE}        ;;
+      --delete-all)      DELETE_ALL=${TRUE}  ;;
+      --remove)          REMOVE=${TRUE}      ;;
+      # END WORKING
+
+      --upload)          UPLOAD=${TRUE}      ;;
+      --upload-file*)
+        UPLOAD_FILE=${TRUE}
+        [[ ${arg} =~ '=' ]] && FILE="${arg#*=}"
+        ;;
+      --upload-res*)     UPLOAD_RESUME=${TRUE} ;;
+      --upload-letter)   UPLOAD_LETTER=${TRUE} ;;
+      --open-res*)
+        __open_resume; exit 0; ;;
+      --delete)          DELETE=${TRUE}      ;;
+     
+      --delete-dir*)
+        DELETE_DIR=${TRUE}
+        [[ ${arg} =~ '=' ]] && DIRECTORY="${arg#*=}"
+        ;;
+      --delete-log*)     DELETE_LOGS=${TRUE} ;;
+      --remove-log)      REMOVE_LOG=${TRUE}  ;;
+      --dry-run)         DRY_RUN=${TRUE}     ;;
+    
+      --size)            SIZE=${TRUE}        ;;
+      --upload-dir*)
+        UPLOAD_DIR=${TRUE}
+        [[ ${arg} =~ '=' ]] && DIRECTORY="${arg#*=}"
+        ;;
+      # Flags
+      --pwd)
+        USE_PWD=${TRUE}
+        SITE_DIR='.'
+        ;;
+
+      *) die "Unknown option: ${arg}" ;;
+   esac
+  done
+  return 0
+}
+
+__dispatch() {
+
+  __check_aws
+
+  (( LIST )) && __list
+  (( OPEN )) && __open
+  (( SYNC )) && __sync
+  (( DELETE_ALL )) && __delete_all
+  (( REMOVE )) && __remove
+
+  (( UPLOAD )) && __upload
+  (( UPLOAD_DIR )) && __upload_dir
+  (( UPLOAD_FILE )) && __upload_file
+  (( UPLOAD_RESUME )) && __upload_resume
+  (( UPLOAD_LETTER )) && __upload_letter
+  (( DELETE )) && __delete
+  
+  (( DELETE_DIR )) && __delete_dir
+  (( DELETE_LOGS )) && __delete_logs
+  (( REMOVE_LOG )) && __remove_log
+  (( SIZE )) && __size
+  return 0
+}
+
+main() {
+  (( ${#} < MIN_ARG_COUNT )) && die "Expects at least ${MIN_ARG_COUNT} arguments" 1
+  (( $# > 0 )) && __get_opts "$@"
+
+  __dispatch
+
+  return 0
+}
+(( ${#} > 0 )) && main "${@}" || main
