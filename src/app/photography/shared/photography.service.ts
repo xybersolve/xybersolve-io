@@ -10,7 +10,7 @@ import { IImage } from './images.model'
   providedIn: 'root'
 })
 export class PhotographyService {
-  private imagesUrl = 'src/api/photography/images.json';
+  private imagesUrl = 'assets/api/photography/images.json';
   
   constructor(private http: HttpClient) {}
 

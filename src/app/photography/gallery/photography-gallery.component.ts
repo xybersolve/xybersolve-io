@@ -9,7 +9,7 @@ import { PhotographyService } from '../shared/photography.service'
   styleUrls: ['./photography-gallery.component.css']
 })
 export class PhotographyGalleryComponent implements OnInit {
-  basePath: string = 'image/gallery/medium-lo-res';
+  basePath: string = 'assets/image/gallery/medium-lo-res';
   mode : string = 'fine-art'
   images: IImage[] = [];
   imageId: null;

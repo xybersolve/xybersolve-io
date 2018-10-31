@@ -1,0 +1,15 @@
+div.not-found-container {
+  height: 20em;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+ div.not-found-container p {
+  margin: 0; 
+  margin-left:-100px;
+  font-size:32px;
+  font-weight: bold;
+  color: rgb(143, 81, 81);
+  text-shadow: 2px 2px 5px grey;
+ } 

@@ -6,12 +6,12 @@ import { Component } from '@angular/core';
 })
 
 export class CodeComponent {
-  title: string = 'Code Gallery';
-  showAll: boolean = true;  
-  showDetail: boolean = true;
-  showTech: boolean = true;
+  title = 'Code Gallery';
+  showAll = true;  
+  showDetail = true;
+  showTech = true;
 
-  techFilter: string = '';  
+  techFilter = '';  
  
   toggleAll(): void {
     this.showAll = !this.showAll;

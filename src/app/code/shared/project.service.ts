@@ -9,7 +9,7 @@ import { IProject } from './project.model';
   providedIn: 'root'
 })
 export class ProjectService {
-  private projectUrl = 'src/api/code/projects.json';
+  private projectUrl = 'assets/api/code/projects.json';
   
   techterms: string[] = [];
   

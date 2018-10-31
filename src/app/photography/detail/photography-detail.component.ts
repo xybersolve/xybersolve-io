@@ -11,7 +11,7 @@ import { PhotographyService } from '../shared/photography.service';
 })
 export class PhotographyDetailComponent implements OnInit {
   pageTitle: string = 'Image Detail'
-  basePath: string = 'image/gallery/medium-lo-res';
+  basePath: string = 'assets/image/gallery/medium-lo-res';
   errorMessage: string = ''
   image: IImage | undefined;
 

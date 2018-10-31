@@ -16,8 +16,8 @@ import { AdminComponent } from './admin/admin.component';
 import { CodeModule } from './code/code.module';
 import { PhotographyModule } from './photography/photography.module';
 import { AppRoutingModule } from './app-routing.module';
-//import { NotFoundComponent } from './not-found.component';
- 
+import { NotFoundComponent } from './core/not-found/not-found.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
     HomeComponent,  
     ContactComponent,
     AdminComponent,
-    //NotFoundComponent
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

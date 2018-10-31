@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  //selector: 'xs-photography', // omit - part of routing
   templateUrl: './photography.component.html',
   styleUrls: ['./photography.component.css']
 })
