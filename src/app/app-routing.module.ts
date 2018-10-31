@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // Flat page components 
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
-//import { AdminComponent } from './admin/admin.component';
+import { NotFoundComponent } from './core/not-found/not-found.component';
 
 const routes: Routes = [
   { 
@@ -17,11 +17,15 @@ const routes: Routes = [
     path: '', 
     redirectTo: 'home', 
     pathMatch: 'full' 
-  }, { 
-    path: '**', 
-    redirectTo: 'home', 
-    pathMatch: 'full' 
-  }
+  }, {
+    path: '**',
+    component: NotFoundComponent
+  }  
+  // }, { 
+  //   path: '**', 
+  //   redirectTo: 'home', 
+  //   pathMatch: 'full' 
+  // }
 ];
 
 @NgModule({
