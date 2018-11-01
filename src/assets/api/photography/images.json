@@ -4,7 +4,7 @@
     "title": "Santa Cruz Lighthouse at Sunrise",
     "file": "Santa-Cruz-Lighthouse-at-Sunrise-2.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "An picturesque sunrise in West Cliff",
     "show": true,
     "sort": 10
   }, {
@@ -12,7 +12,7 @@
     "title": "Silhouette of Seacliff Pier",
     "file": "Silhouette-of-Seacliff-Pier.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "A perfect reflection reached 100 feet up onto the beach...",
     "show": true,
     "sort": 20
   }, {
@@ -20,7 +20,7 @@
     "title": "Capitola Wharf at Sunrise",
     "file": "Capitola-Wharf-at-Sunrise.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "And, the sky seemed to go forever...",
     "show": true,
     "sort": 25
   }, {
@@ -28,7 +28,7 @@
     "title": "Life Guard Towers in Winter",
     "file": "Life-Guard-Towers-in-Winter.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "Life guard towers pushed up onto ice plants to winter.",
     "show": true,
     "sort": 28
   }, {
@@ -36,15 +36,15 @@
     "title": "Under the Pier",
     "file": "Under-the-Pier.jpg",
     "category": "fine-art",
-    "note": "",
     "show": true,
+    "note": "One of those few shots which I got on the first take",
     "sort": 29
   }, {
     "id": 6,  
     "title": "Magical Morning in Capitola",
     "file": "Magical-Morning-in-Capitola.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "It was like something out of a story book.",
     "show": true,
     "sort": 30
   }, {
@@ -52,7 +52,7 @@
     "title": "La Selva Train Trestle",
     "file": "La-Selva-Train-Trestle.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "Train track and beach lead the way to forever",
     "show": true,
     "sort": 40
   }, {
@@ -60,7 +60,7 @@
     "title": "Venetian Reflections",
     "file": "Venetian-Reflections.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "One of those shots that I stalked for months",
     "show": true,
     "sort": 35
   }, {
@@ -76,7 +76,7 @@
     "title": "A Light in the Redwoods",
     "file": "Light-in-the-Redwoods.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "Like a light from heaven, streaming down through majestic redwoods",
     "show": true,
     "sort": 60
   }, {
@@ -84,7 +84,7 @@
     "title": "Stairway to the Sunset",
     "file": "Stairway-to-the-Sunset.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "One of the rare moments, that keep me shooting",
     "show": true,
     "sort": 2
   }, {
@@ -92,7 +92,7 @@
     "title": "Sunrise on the Boardwalk",
     "file": "Sunrise-on-the-Boardwalk.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "A sunrise hard to believe with my own eyes. And then it was gone...",
     "show": true,
     "sort": 70
   }, {
@@ -100,7 +100,7 @@
     "title": "The Santa Cruz Roller Coaster",
     "file": "Santa-Cruz-Roller-Coaster.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "The Big Dipper in fine form",
     "show": true,
     "sort": 70
     }, {
@@ -108,7 +108,7 @@
     "title": "The Harbor Lighthouse",
     "file": "The-Harbor-Lighthouse.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "Too many this shot feels like an oil painting, or so they say.",
     "show": true,
     "sort": 80
    }, {
@@ -116,7 +116,7 @@
     "title": "The Colors of New Brighton Beach",
     "file": "The-Colors-of-New-Brighton-Beach.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "Colors separate and distinguish shape and form",
     "show": false,
     "sort": 100
    }, {
@@ -124,7 +124,7 @@
     "title": "Moon Gazing Surf Statue",
     "file": "Moon-Gazing-Surf-Statue.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "An iconic piece of Santa Cruz",
     "show": true,
     "sort": 90
   }, {
@@ -132,7 +132,7 @@
     "title": "Quasimodo Redwood",
     "file": "Quasimodo-Redwood.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "On all little light must fall",
     "show": true,
     "sort": 72
   }, {
@@ -140,7 +140,7 @@
     "title": "Secret Path",
     "file": "Secret-Path.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "A magical path in Seacliff",
     "show": true,
     "sort": 45
   }, {
@@ -148,7 +148,7 @@
     "title": "Capitola Wharf at Sunset",
     "file": "Capitola-Wharf-at-Sunset.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "A fine moment on the beach",
     "show": true,
     "sort": 62
   }, {
@@ -156,7 +156,7 @@
     "title": "Capitola at Sunrise",
     "file": "Capitola-at-Sunrise.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "A view of Capitola Village from one of my favorite hideouts",
     "show": true,
     "sort": 62
   }, {
@@ -164,7 +164,7 @@
     "title": "White Bird",
     "file": "White-Bird.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "Natural Bridges in all its splendor",
     "show": true,
     "sort": 65
   }, {
@@ -172,7 +172,7 @@
     "title": "Slough at Sunrise",
     "file": "Slough-at-Sunrise.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "Elkhorn Slough, near Moss Landing",
     "show": true,
     "sort": 150
   }, {
@@ -180,7 +180,7 @@
     "title": "Sunset on the Slough",
     "file": "Sunset-on-the-Slough.jpg",
     "category": "fine-art",
-    "note": "",
+    "note": "While I have never sold this shot, I enjoy this magical place.",
     "show": true,
     "sort": 160
 
