@@ -4,7 +4,8 @@ build:
 	npm run build
 
 build-prod:
-	npm run build:prod
+	#npm run build:prod
+	@docker run -it xybersolve/minimal-node-build-env:latest /bin/bash
 
 lint:
 	npm lint
