@@ -1,0 +1,13 @@
+{
+  "Version": "2012-10-17",
+  "Id": "bucket_policy_xybersolve.io.2",
+  "Statement": [
+      {
+          "Sid": "bucket_policy_xybersolve.io.2",
+          "Effect": "Allow",
+          "Principal": "*",
+          "Action": "s3:GetObject",
+          "Resource": "arn:aws:s3:::xybersolve.io.2/*"
+      }
+  ]
+}
