@@ -58,7 +58,7 @@ jobs:
       - run: 
           name: Post-build listing of workspace
           command: |
-            exho PWD $(pwd)
+            echo PWD $(pwd)
             ls -lah ~/xybersolve-build
 
       - save_cache:
