@@ -55,12 +55,6 @@ jobs:
           name: Install local dependencies - NPM modules
           command: npm install
 
-      - run: 
-          name: Post-build listing of workspace
-          command: |
-            echo PWD $(pwd)
-            ls -lah ~/xybersolve-build/dist
-
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
           paths:
@@ -68,16 +62,20 @@ jobs:
 
       - run: 
           name: Build app for production
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
-              npm run build:qa
-            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-              npm run build:prod
-            else
-              npm run build:dev
-            fi
+          command: npm run build:prod
+            # if [ "${CIRCLE_BRANCH}" == "staging" ]; then
+            #   npm run build:qa
+            # elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+            #   npm run build:prod
+            # else
+            #   npm run build:dev
+            # fi
 
-          # command: npm run build:prod
+      - run: 
+          name: Post-build listing of workspace
+          command: |
+            echo PWD $(pwd)
+            ls -lah ~/xybersolve-build/dist
       
       # require: angular.json -> outputPath: dist
       - save_cache:
