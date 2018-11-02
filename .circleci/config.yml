@@ -59,14 +59,15 @@ jobs:
 
       - run: 
           name: Build app for production
-            command: |
-              if [ "${CIRCLE_BRANCH}" == "staging" ]; then
-                npm run build:qa
-              elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-                npm run build:prod
-              else
-                npm run build:dev
-              fi
+            command: npm run build:prod          
+            # command: |
+            #   if [ "${CIRCLE_BRANCH}" == "staging" ]; then
+            #     npm run build:qa
+            #   elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+            #     npm run build:prod
+            #   else
+            #     npm run build:dev
+            #   fi
             # command: npm run build:prod          
             # build:qa - future build feature
       
