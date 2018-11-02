@@ -122,7 +122,6 @@ workflows:
             branches:
               only: 
                 - release
-                - master
                 - staging
                 - develop
                 - qa
