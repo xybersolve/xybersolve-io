@@ -4,10 +4,13 @@
 
 ## Deployment
 This project has two deployment utilities, those being:
-* circleci - CI/CD deployment to S3
-* bash script - for development deployment to S3 bucket (an artifact from previous times)
+* circleci - CI/CD deployment to S3 (prod, qa, staging, dev)
+* bash script - useful for syncing content (images, documents) without a build 
 
-#### Bash script deploy app to to S3 static website
+### CricleCI
+Curently setup to build and deploy in 'production' on a 'release branch push.
+
+#### Bash script deploy content to to S3 static website
 ###### Deploy Sytnax
 
 ```sh
