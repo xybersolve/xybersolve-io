@@ -233,16 +233,8 @@ __dispatch() {
   (( UPLOAD_LETTER )) && __upload_letter
   (( DELETE_ALL )) && __delete_all
   (( REMOVE )) && __remove
+  (( SIZE )) && __size
 
-  # (( UPLOAD )) && __upload
-  # (( UPLOAD_DIR )) && __upload_dir
-  # (( UPLOAD_FILE )) && __upload_file
-  # (( DELETE )) && __delete
-  
-  # (( DELETE_DIR )) && __delete_dir
-  # (( DELETE_LOGS )) && __delete_logs
-  # (( REMOVE_LOG )) && __remove_log
-  # (( SIZE )) && __size
   return 0
 }
 
