@@ -56,14 +56,10 @@ jobs:
           command: npm install
 
       - run: 
-          name: Check for tree
-          command: tree
-    
-      - run: 
           name: Post-build listing of workspace
           command: |
             echo PWD $(pwd)
-            ls -lah ~/xybersolve-build
+            ls -lah ~/xybersolve-build/dist
 
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
@@ -117,7 +113,7 @@ jobs:
           name: Pre-deploy listing of workspace
           command: |
             echo PWD $(pwd)
-            ls -lah ~/xybersolve-build
+            ls -lah ~/xybersolve-build/dist
 
 
       - run:
