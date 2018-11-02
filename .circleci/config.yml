@@ -15,6 +15,9 @@
 #
 version: 2
 jobs:
+  #
+  #  build: Build Angular app and save to cache  
+  #
   build:
     working_directory: ~/xybersolve-build
     
@@ -50,7 +53,7 @@ jobs:
 
       - run: 
           name: Build app for production
-          command: |  
+          command: |
             case "${CIRCLE_BRANCH}" in
               develop)
                 npm run build:dev
@@ -64,15 +67,6 @@ jobs:
             esac      
 
           # command: npm run build:prod
-          # more granular builds
-          # command: |  
-            # if [ "${CIRCLE_BRANCH}" == "staging" ]; then
-            #   npm run build:qa
-            # elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-            #   npm run build:prod
-            # else
-            #   npm run build:dev
-            # fi
       
       # debug.x      
       # - run: 
@@ -87,13 +81,14 @@ jobs:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - dist
-
-
-  #- image: circleci/python:3.6.2-stretch-browsers            
+  #          
+  # deploy: Deploy angular app from cache to AWS Static S3 Site  
+  #          
+  
   deploy:
     docker:
       - image: circleci/python:2.7-jessie
-    
+    # - image: circleci/python:3.6.2-stretch-browsers              
     working_directory: ~/xybersolve-build
     
     steps:
@@ -139,9 +134,6 @@ jobs:
                 ;;
             esac
             # command: aws s3 sync ./dist s3://xybersolve.io.2/ --delete
-      #
-      # note: use './deploy --open' to manually test development, staging interim s3 site 
-      #      
 
 workflows:
   version: 2
