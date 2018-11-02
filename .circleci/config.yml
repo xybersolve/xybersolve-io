@@ -40,7 +40,7 @@ jobs:
           name: Show Job Related Variables
           command: |
             echo Branch ${CIRCLE_BRANCH}
-            echo Sha ${CIRCLE_SHA1 }
+            echo Sha ${CIRCLE_SHA1}
             echo Job ${CIRCLE_JOB}
             echo Dir ${CIRCLE_WORKING_DIRECTORY}
 
