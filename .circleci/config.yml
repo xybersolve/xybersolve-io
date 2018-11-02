@@ -51,11 +51,12 @@ jobs:
           name: Install local dependencies - NPM modules
           command: npm install      
 
+
       - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
           paths:
-          - node_modules
-            key: v1-dependencies-{{ checksum "package.json" }}
-        
+            - node_modules
+
       - run: 
           name: Build app for production
             command: |
@@ -75,11 +76,13 @@ jobs:
             paths:
               - dist
 
+  #- image: circleci/python:3.6.2-stretch-browsers            
   deploy:
     docker:
-      #- image: circleci/python:3.6.2-stretch-browsers
       - image: circleci/python:2.7-jessie
+    
     working_directory: /tmp/xybersolve-io
+    
     steps:
       - run:
           name: Install awscli
@@ -149,8 +152,7 @@ workflows:
 #       - run: yarn test
 
 
-version: 2
-
+#version: 2
 # # List of jobs
 # jobs:
 #     # The build job
