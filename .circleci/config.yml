@@ -1,4 +1,4 @@
-# Javascript Node CircleCI 2.0 configuration file
+# References
 #
 # For debugging and notification
 # CIRCLE_BUILD_NUM
@@ -20,20 +20,19 @@ jobs:
     
     docker:
       - image: circleci/node:10.12-jessie
-      # - image: circleci/node:6.10-browsers
-      # - image: circleci/node:7.10
     
     steps:
       - checkout
-      
-      - run:
-          name: Show Job Related Variables
-          command: |
-            echo Branch ${CIRCLE_BRANCH}
-            echo Sha ${CIRCLE_SHA1}
-            echo Job ${CIRCLE_JOB}
-            echo Dir ${CIRCLE_WORKING_DIRECTORY}
-            echo Bash Ver $(bash --version)
+     
+      # debug.x
+      # - run:
+      #     name: Show Job Related Variables
+      #     command: |
+      #       echo Branch ${CIRCLE_BRANCH}
+      #       echo Sha ${CIRCLE_SHA1}
+      #       echo Job ${CIRCLE_JOB}
+      #       echo Dir ${CIRCLE_WORKING_DIRECTORY}
+      #       echo Bash Ver $(bash --version)
 
       - restore-cache:
           keys:
@@ -51,7 +50,22 @@ jobs:
 
       - run: 
           name: Build app for production
-          command: npm run build:prod
+          command: |  
+            case "${CIRCLE_BRANCH}" in
+              develop)
+                npm run build:dev
+                ;;
+              staging)
+                npm run build:stage
+                ;;
+              master|release)
+                npm run build:prod
+                ;;
+            esac      
+
+          # command: npm run build:prod
+          # more granular builds
+          # command: |  
             # if [ "${CIRCLE_BRANCH}" == "staging" ]; then
             #   npm run build:qa
             # elif [ "${CIRCLE_BRANCH}" == "master" ]; then
@@ -59,15 +73,16 @@ jobs:
             # else
             #   npm run build:dev
             # fi
-
-      - run: 
-          name: Post-build listing of workspace
-          command: |
-            echo PWD $(pwd)
-            ls -lah ./dist
       
-      # require: angular.json -> outputPath: dist
-      #   or: ng build --prod --output-path=dist
+      # debug.x      
+      # - run: 
+      #     name: Post-build listing of workspace
+      #     command: |
+      #       echo PWD $(pwd)
+      #       ls -lah ./dist
+      
+      # requires: angular.json -> outputPath: dist
+      #       or: ng build --prod --output-path=dist
       - save_cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
@@ -86,9 +101,10 @@ jobs:
           name: Install awscli
           command: sudo pip install awscli
       
-      - run:
-          name: Reflect AWS Region
-          command: echo AWS Region ${AWS_REGION}  
+      # debug.x    
+      # - run:
+      #     name: Reflect AWS Region
+      #     command: echo AWS Region ${AWS_REGION}  
 
       - run:
           name: Configure AWS
@@ -100,23 +116,32 @@ jobs:
 
       - restore-cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+      
+      # debug.x    
+      # - run:
+      #     name: Pre-deploy listing of workspace
+      #     command: |
+      #       echo PWD $(pwd)
+      #       ls -lah ./dist
 
-      - run:
-          name: Pre-deploy listing of workspace
-          command: |
-            echo PWD $(pwd)
-            ls -lah ./dist
-
-
-      - run:
+      - deploy:
           name: Deploy to S3
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-               aws s3 sync ./dist s3://xybersolve.io.2/ --delete
-            fi
-
-            # require 
-            # command: aws s3 sync /tmp/xybersolve-build s3://xybersolve.io.2/ --delete
+            case "${CIRCLE_BRANCH}" in
+              develop)
+                aws s3 sync ./dist s3://xybersolve.io.2/ --delete
+                ;;
+              staging) 
+                aws s3 sync ./dist s3://xybersolve.io.2/ --delete
+                ;;
+              master)
+                aws s3 sync ./dist s3://xybersolve.io/ --delete
+                ;;
+            esac
+            # command: aws s3 sync ./dist s3://xybersolve.io.2/ --delete
+      #
+      # note: use './deploy --open' to manually test development, staging interim s3 site 
+      #      
 
 workflows:
   version: 2
@@ -130,67 +155,9 @@ workflows:
             - build
           filters:
             branches:
-              only: master
+              only: 
+                - master
+                - staging
+                - develop
+                - qa
           context: xybersolve-io    
-
-# version: 2
-# jobs:
-#   build:
-#     docker:
-#       # specify the version you desire here
-#       - image: circleci/node:7.10
-      
-#       # Specify service dependencies here if necessary
-#       # CircleCI maintains a library of pre-built images
-#       # documented at https://circleci.com/docs/2.0/circleci-images/
-#       # - image: circleci/mongo:3.4.4
-
-#     working_directory: ~/repo
-
-#     steps:
-#       - checkout
-
-#       # Download and cache dependencies
-#       - restore_cache:
-#           keys:
-#           - v1-dependencies-{{ checksum "package.json" }}
-#           # fallback to using the latest cache if no exact match is found
-#           - v1-dependencies-
-
-#       - run: yarn install
-
-#       - save_cache:
-#           paths:
-#             - node_modules
-#           key: v1-dependencies-{{ checksum "package.json" }}
-        
-#       # run tests!
-#       - run: yarn test
-
-
-#version: 2
-# # List of jobs
-# jobs:
-#     # The build job
-#     build:
-#         working_directory: ~/project
-#         docker:
-#             - image: circleci/node:6.10-browsers
-#         steps:
-#            # Steps to be added
-
-#     # The deploy job
-#     deploy:
-#         working_directory: ~/project
-#         docker:
-#             - image: circleci/node:6.10-browsers
-#         steps:
-#             # Steps to be added
-            
-# workflows:
-#     version: 2
-#     # The build and deploy workflow
-#     build_and_deploy:
-#         jobs:
-#             - build
-#             - deploy
