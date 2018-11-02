@@ -110,10 +110,10 @@ jobs:
             aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
 
       - run:
-        name: Pre-deploy listing of workspace
-        command: |
-          echo PWD $(pwd)
-          ls -lah ~/xybersolve-build
+          name: Pre-deploy listing of workspace
+          command: |
+            echo PWD $(pwd)
+            ls -lah ~/xybersolve-build
 
 
       - run:
