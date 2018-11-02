@@ -119,14 +119,15 @@ workflows:
   build-deploy:
     jobs:
       - build:
-        context: xybersolve-io
-      - deploy:
           context: xybersolve-io
+
+      - deploy:
           requires:
             - build
           filters:
             branches:
               only: master
+          context: xybersolve-io    
 
 # version: 2
 # jobs:
