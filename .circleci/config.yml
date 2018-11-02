@@ -1,16 +1,5 @@
 # Javascript Node CircleCI 2.0 configuration file
 #
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-# dependencies:
-#   override:
-#     - sudo pip install awscli
-#   deployment:
-#     prod:
-#       branch: master
-#       commands:
-#         - aws s3 sync /home/ubuntu/project-name-here s3://bucket-name-here --delete
-#
 # For debugging and notification
 # CIRCLE_BUILD_NUM
 # CIRCLE_JOB
@@ -18,7 +7,7 @@
 # CIRCLE_BRANCH 
 # CIRCLE_SHA1 
 #
-# Must be set in CirclCI Variables
+# Must be set in CirclCI Context
 # AWS_ACCESS_KEY_ID
 # AWS_ACCOUNT_ID
 # AWS_REGION
@@ -75,11 +64,15 @@ jobs:
           name: Post-build listing of workspace
           command: |
             echo PWD $(pwd)
-            ls -lah ~/xybersolve-build/dist
+            ls -lah ./dist
       
       # require: angular.json -> outputPath: dist
+      #   or: ng build --prod --output-path=dist
       - save_cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - dist
+
 
   #- image: circleci/python:3.6.2-stretch-browsers            
   deploy:
@@ -106,20 +99,20 @@ jobs:
             aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
 
       - restore-cache:
-          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }} }}
+          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
 
       - run:
           name: Pre-deploy listing of workspace
           command: |
             echo PWD $(pwd)
-            ls -lah ~/xybersolve-build/dist
+            ls -lah ./dist
 
 
       - run:
           name: Deploy to S3
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-               aws s3 sync ~/xybersolve-build/dist s3://xybersolve.io.2/ --delete
+               aws s3 sync ./dist s3://xybersolve.io.2/ --delete
             fi
 
             # require 
