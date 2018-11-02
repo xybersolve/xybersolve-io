@@ -27,7 +27,7 @@
 version: 2
 jobs:
   build:
-    working_directory: /tmp/xybersolve-io
+    working_directory: ~/xybersolve-build
     
     docker:
       - image: circleci/node:10.12-jessie
@@ -55,6 +55,11 @@ jobs:
           name: Install local dependencies - NPM modules
           command: npm install
 
+      - run: 
+          name: Post-build listing of workspace
+          command: |
+            exho PWD $(pwd)
+            ls -lah ~/xybersolve-build
 
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
@@ -85,7 +90,7 @@ jobs:
     docker:
       - image: circleci/python:2.7-jessie
     
-    working_directory: /tmp/xybersolve-io
+    working_directory: ~/xybersolve-build
     
     steps:
       - run:
@@ -104,15 +109,22 @@ jobs:
             aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}
             aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
 
+      -run:
+        name: Pre-deploy listing of workspace
+        command: |
+          echo PWD $(pwd)
+          ls -lah ~/xybersolve-build
+
+
       - run:
           name: Deploy to S3
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-               aws s3 sync /tmp/xybersolve-io s3://xybersolve.io.2/ --delete
+               aws s3 sync ~/xybersolve-build/dist s3://xybersolve.io.2/ --delete
             fi
 
             # require 
-            # command: aws s3 sync /tmp/xybersolve-io s3://xybersolve.io.2/ --delete
+            # command: aws s3 sync /tmp/xybersolve-build s3://xybersolve.io.2/ --delete
 
 workflows:
   version: 2
