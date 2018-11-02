@@ -6,7 +6,7 @@
     "start": "ng serve -o",
     "build:dev": "ng build --target=development --environment=dev",
     "build:qa": "ng build --target=production --environment=qa",
-    "build:prod": "ng build --prod",
+    "build:prod": "ng build --prod --output=dist",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

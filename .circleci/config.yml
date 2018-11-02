@@ -56,6 +56,10 @@ jobs:
           command: npm install
 
       - run: 
+          name: Check for tree
+          command: tree
+    
+      - run: 
           name: Post-build listing of workspace
           command: |
             echo PWD $(pwd)
