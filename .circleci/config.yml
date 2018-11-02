@@ -114,15 +114,23 @@ workflows:
     jobs:
       - build:
           context: xybersolve-io
-
-      - deploy:
-          requires:
-            - build
           filters:
             branches:
-              only: 
+              only:
                 - release
                 - staging
                 - develop
                 - qa
-          context: xybersolve-io    
+
+      - deploy:
+          context: xybersolve-io
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - release
+                - staging
+                - develop
+                - qa
+          
