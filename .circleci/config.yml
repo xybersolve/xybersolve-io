@@ -44,15 +44,16 @@ jobs:
             echo Sha ${CIRCLE_SHA1}
             echo Job ${CIRCLE_JOB}
             echo Dir ${CIRCLE_WORKING_DIRECTORY}
+            echo Bash Ver $(bash --version)
 
       - restore-cache:
           keys:
            - v1-dependencies-{{ checksum "package.json" }}
-           - v1-dependencies-        
+           - v1-dependencies-
       
       - run: 
           name: Install local dependencies - NPM modules
-          command: npm install      
+          command: npm install
 
 
       - save_cache:
@@ -72,7 +73,7 @@ jobs:
             fi
           # command: npm run build:prod          
       
-      # angular.json -> outputPath (dist)       
+      # require: angular.json -> outputPath: dist       
       - save_cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
@@ -89,14 +90,18 @@ jobs:
       - run:
           name: Install awscli
           command: sudo pip install awscli
+      
+      - run:
+          name: Reflect AWS Region
+          command: echo AWS Region ${AWS_REGION}  
 
       - run:
           name: Configure AWS
           command: |
             aws configure set default.s3.signature_version s3v4
-            aws configure set region $AWS_REGION
-            aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-            aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+            aws configure set region ${AWS_REGION}
+            aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}
+            aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
 
       - run:
           name: Deploy to S3
@@ -104,6 +109,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
                aws s3 sync /tmp/xybersolve-io s3://xybersolve.io.2/ --delete
             fi
+            
             # require 
             # command: aws s3 sync /tmp/xybersolve-io s3://xybersolve.io.2/ --delete
 
