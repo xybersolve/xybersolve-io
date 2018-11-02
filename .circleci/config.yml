@@ -80,8 +80,6 @@ jobs:
       # require: angular.json -> outputPath: dist
       - save_cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
-          paths:
-            - dist
 
   #- image: circleci/python:3.6.2-stretch-browsers            
   deploy:
@@ -106,6 +104,9 @@ jobs:
             aws configure set region ${AWS_REGION}
             aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}
             aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
+
+      - restore-cache:
+          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }} }}
 
       - run:
           name: Pre-deploy listing of workspace
