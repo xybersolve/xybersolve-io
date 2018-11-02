@@ -71,9 +71,10 @@ jobs:
             else
               npm run build:dev
             fi
-          # command: npm run build:prod          
+
+          # command: npm run build:prod
       
-      # require: angular.json -> outputPath: dist       
+      # require: angular.json -> outputPath: dist
       - save_cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
@@ -109,7 +110,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
                aws s3 sync /tmp/xybersolve-io s3://xybersolve.io.2/ --delete
             fi
-            
+
             # require 
             # command: aws s3 sync /tmp/xybersolve-io s3://xybersolve.io.2/ --delete
 
@@ -118,7 +119,9 @@ workflows:
   build-deploy:
     jobs:
       - build
+        context: xybersolve-io
       - deploy:
+          context: xybersolve-io
           requires:
             - build
           filters:
