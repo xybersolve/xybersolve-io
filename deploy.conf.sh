@@ -19,8 +19,8 @@ declare LETTER_PATH=${RESUME_DIR}/${LETTER_FILE}
 declare SOURCE_DIR="${SITE_DIR}/dist"
 
 # site buckets
-declare SITE_BUCKET='xybersolve.io.2'
-declare LOG_BUCKET='logs.xybersolve.io.2'
+declare SITE_BUCKET='xybersolve.io'
+declare LOG_BUCKET='logs.xybersolve.io'
 
 # for testing
 declare SITE_ENDPOINT='http://xybersolve.io.2.s3-website-us-west-2.amazonaws.com'
