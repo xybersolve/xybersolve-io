@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
-    "build:dev": "ng build --target=development --environment=dev",
-    "build:qa": "ng build --target=production --environment=qa",
-    "build:prod": "ng build --prod --output-path=dist",
+    "build:dev": "ng build --configuration=develop --output-path=dist",
+    "build:qa": "ng build --configuration=qa --output-path=dist",
+    "build:stage": "ng build --configuration=stage --output-path=dist",
+    "build:prod": "ng build --prod --configuration=production --output-path=dist",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
