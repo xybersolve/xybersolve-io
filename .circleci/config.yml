@@ -1,4 +1,4 @@
-# References
+# Variable Reference
 #
 # For debugging and notification
 # CIRCLE_BUILD_NUM
@@ -9,9 +9,9 @@
 #
 # Must be set in CirclCI Context
 # AWS_ACCESS_KEY_ID
-# AWS_ACCOUNT_ID
-# AWS_REGION
 # AWS_SECRET_ACCESS_KEY
+# AWS_REGION
+#
 #
 version: 2
 jobs:
@@ -26,17 +26,6 @@ jobs:
     
     steps:
       - checkout
-     
-      # debug.x
-      # - run:
-      #     name: Show Job Related Variables
-      #     command: |
-      #       echo Branch ${CIRCLE_BRANCH}
-      #       echo Sha ${CIRCLE_SHA1}
-      #       echo Job ${CIRCLE_JOB}
-      #       echo Dir ${CIRCLE_WORKING_DIRECTORY}
-      #       echo Bash Ver $(bash --version)
-
       - restore-cache:
           keys:
            - v1-dependencies-{{ checksum "package.json" }}
@@ -61,20 +50,11 @@ jobs:
               staging)
                 npm run build:stage
                 ;;
-              master|release)
+              release)
                 npm run build:prod
                 ;;
             esac      
 
-          # command: npm run build:prod
-      
-      # debug.x      
-      # - run: 
-      #     name: Post-build listing of workspace
-      #     command: |
-      #       echo PWD $(pwd)
-      #       ls -lah ./dist
-      
       # requires: angular.json -> outputPath: dist
       #       or: ng build --prod --output-path=dist
       - save_cache:
@@ -111,13 +91,6 @@ jobs:
 
       - restore-cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
-      
-      # debug.x    
-      # - run:
-      #     name: Pre-deploy listing of workspace
-      #     command: |
-      #       echo PWD $(pwd)
-      #       ls -lah ./dist
 
       - deploy:
           name: Deploy to S3
@@ -129,7 +102,7 @@ jobs:
               staging) 
                 aws s3 sync ./dist s3://xybersolve.io.2/ --delete
                 ;;
-              master)
+              release)
                 aws s3 sync ./dist s3://xybersolve.io/ --delete
                 ;;
             esac
@@ -148,6 +121,7 @@ workflows:
           filters:
             branches:
               only: 
+                - release
                 - master
                 - staging
                 - develop
