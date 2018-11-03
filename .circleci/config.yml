@@ -61,10 +61,10 @@ jobs:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - dist
+
   #          
   # deploy: Deploy angular app from cache to AWS Static S3 Site  
   #          
-  
   deploy:
     docker:
       - image: circleci/python:2.7-jessie
@@ -75,11 +75,6 @@ jobs:
       - run:
           name: Install awscli
           command: sudo pip install awscli
-      
-      # debug.x    
-      # - run:
-      #     name: Reflect AWS Region
-      #     command: echo AWS Region ${AWS_REGION}  
 
       - run:
           name: Configure AWS
@@ -106,8 +101,7 @@ jobs:
                 aws s3 sync ./dist s3://xybersolve.io/ --delete
                 ;;
             esac
-            # command: aws s3 sync ./dist s3://xybersolve.io.2/ --delete
-
+            
 workflows:
   version: 2
   build-deploy:
