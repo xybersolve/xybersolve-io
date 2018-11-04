@@ -1,40 +1,47 @@
 [
   {
-    "name":"s3-glacier-backup",
+    "name":"xybersolve.io-angular",
+    "fa": "fab fab fa-angular",
+    "title":"Xybersolve, Angular website",
+    "href": "https://github.com/xybersolve/xybersolve-io",
+    "description": "xybersolve.io Angular v6 website",
+    "notes": "Angular app deployed via CircleCi to static AWS S3 Website. Ported from AngularJS with some UI mods...",
+    "technology": ["Angular", "CircleCi", "AWS", "S3", "Bootstrap", "HTML5", "CSS3"],
+    "sortOrder": 80
+  },  {    "name":"s3-glacier-backup",
     "fa": "fab fa-aws",
     "title":"Glacier cold storage archive.",
     "href": "https://github.com/xybersolve/s3-glacier-backup",
     "description": "Bash script automates Glacier backup via S3 of defined sets of directories and buckets. Notifies via SNS email message when automated backup occurs",
     "notes": "Bash script backs up predefined sets of directories to Glacier via S3...",
-    "technology": ["bash", "AWS", "S3", "Glacier"],
+    "technology": ["bash", "AWS", "S3", "SNS", "Glacier"],
     "sortOrder": 85
   },  {
-
     "name":"terraform_gsuite_aws_module",
     "fa": "fab fa-aws",
     "title":"Custom Terraform Module to map DNS for corporate email via GSuite.",
     "href": "https://github.com/xybersolve/terraform_gsuite_aws_module",
     "description": "Custom Terraform module automates Route53 MX, TXT & CNAME record creation for Google Gsuite email and application subdomains.",
     "notes": "Terraform module for easy 3rd party domain email service, via Google...",
-    "technology": ["terraform", "AWS", "Route53", "gsuite", "google"],
+    "technology": ["terraform", "AWS", "Route53", "GSuite", "Google"],
     "sortOrder": 90
+  },  {    
+    "name":"xs-node-build-minimal",
+    "fa": "fab fa-node-js",
+    "title":"Minimal Dockerized NodeJS build environment.",
+    "href": "https://github.com/xybersolve/xs-node-build-minimal",
+    "description": "Docker image provides minimal build environment for NodeJS type applications. CircleCi deployment to Docker Hub.",
+    "notes": "Base docker image for NodeJS builds...",
+    "technology": ["NodeJS", "Docker", "CircleCi", "Make"],
+    "sortOrder": 85
   },  {
-    "name":"antsy",
-    "fa": "fas fa-magic",
-    "title":"Antsy - Manage Ansible projects, setup and configuration",
-    "href": "https://github.com/xybersolve/antsy",
-    "description": "Antsy - Manage Ansible projects, setup and configuration",
-    "notes": "Install, setup, roles, sync ansible code to bastion server ...",
-    "technology": ["bash", "script", "ansible"],
-    "sortOrder": 95
-  }, {
     "name":"xs-jenkins-blue",
     "fa" : "fab fa-docker",
     "title":"Jenkins automated BlueOcean image builder",
     "href": "https://github.com/xybersolve/xs-jenkins-blue",
     "description": "Builds extensible workspace version of Jenkins BlueOcean, pushed to Docker Hub.",
     "notes": "Jenkins pipeline, docker image builder...",
-    "technology": ["jenkins", "docker", "make"],
+    "technology": ["Jenkins", "Docker", "Make"],
     "sortOrder": 100
   }, {
     "name":"xs-aws-bash-scripts",
@@ -43,7 +50,7 @@
     "href": "https://github.com/xybersolve/xs-aws-bash-scripts",
     "description": "Goal: Independent AWS library bash scripts, with utility frontends",
     "notes": "Manage AWS: EC2, Images, Elastic IPs, Auto-Scaling Groups, Route 53, Monitor, Metric, Alarms, etc...",
-    "technology": ["bash", "aws"],
+    "technology": ["bash", "AWS"],
     "sortOrder": 105
   }, {
 
@@ -53,7 +60,7 @@
     "href": "https://github.com/xybersolve/xs-tf",
     "description": "Bash helper script, for Terraform file based state projects. Simplifies and shortens cli commands.",
     "notes": "Terraform validate, init, plan, apply, destroy wrapper...",
-    "technology": ["terraform", "bash"],
+    "technology": ["Terraform", "Bash"],
     "sortOrder": 110
   }, {
     "name":"jinks",
@@ -62,7 +69,7 @@
     "href": "https://github.com/xybersolve/jinks",
     "description": "Bash script to manage docker blueocean deployment.",
     "notes": "Jenkins, up, down, backup, restore, logs, ssh...",
-    "technology": ["jenkins", "docker", "compose", "make", "bash"],
+    "technology": ["Jenkins", "Docker", "Make", "Bash"],
     "sortOrder": 115
   }, {
     "name":"terraform_r53_web_host_module",
@@ -80,7 +87,7 @@
     "href": "https://github.com/xybersolve/xs-zeromq-req-res-rest",
     "description": "Typical intra-microservice communication using ZeroMQ, exposing REST endpoints",
     "notes": "Promise based request service, microservices, REST...",
-    "technology": ["nodeJS", "docker", "microservices", "zeromq", "jenkins", "make"],
+    "technology": ["NodeJS", "Docker", "Microservices", "ZeroMQ", "Jenkins", "Make"],
     "sortOrder": 125
   }, {
     "name":"xs-zeromq-node-base",
@@ -89,7 +96,7 @@
     "href": "https://github.com/xybersolve/xs-zeromq-node-base",
     "description": "ZeroMQ node base image provides node based socket communications between microservices, for lightweight collaboration",
     "notes": "ZeroMQ node base image, consumers: req-rel, pub-sub, broker-worker microservice projects",
-    "technology": ["docker", "nodeJS","microservices", "zeromq", "jenkins", "make"],
+    "technology": ["Docker", "NodeJS","Microservices", "ZeroMQ", "Jenkins", "Make"],
     "sortOrder": 130
   }, {
     "name":"terraform_data_source_modules",
@@ -98,7 +105,7 @@
     "href": "https://github.com/xybersolve/terraform-data-source-modules",
     "description": "These lookup data modules are useful when one needs to grab existing resources ids or pull AMI Ids.",
     "notes": "Terraform data sources for resource lookup...",
-    "technology": ["terraform", "AWS"],
+    "technology": ["Terraform", "AWS"],
     "sortOrder": 135
   }, {
     "name":"terraform-s3-subdomain",
@@ -107,7 +114,7 @@
     "href": "https://github.com/xybersolve/terraform-s3-subdomain",
     "description": "Terraform service to create static S3 website, with Route53 subdomain & www records",
     "notes": "Terraform: AWS, S3, Route53 for a quick and easy static website as subdomain",
-    "technology": ["terraform", "AWS", "S3", "Route53", "bash"],
+    "technology": ["Terraform", "AWS", "S3", "Route53", "Bash"],
     "sortOrder": 140
   }, {
     "name":"CryptoScanner-react-client",
@@ -116,7 +123,7 @@
     "href": "https://github.com/xybersolve/CryptoScanner-client",
     "description": "React client takes leverages Node microservices, to scrape cryptocurrency trading sites and interact with Mongo DB.",
     "notes": "React app is webpack built in Docker container, and pushed to image repository...",
-    "technology": ["React", "node", "webpack"],
+    "technology": ["React", "Node", "Webpack"],
     "sortOrder": 145
   }, {
     "name":"xs-janks",
@@ -125,7 +132,7 @@
     "href": "https://github.com/xybersolve/xs-janks",
     "description": "Bash script to manage war deployment of Jenkins.",
     "notes": "Jenkins, start, stop, backup, restore, versions, etc...",
-    "technology": ["jenkins", "war", "bash"],
+    "technology": ["Jenkins", "War", "Bash"],
     "sortOrder": 150
   }, {
     "name":"xs-checkbox",
@@ -134,7 +141,7 @@
     "href": "https://github.com/xybersolve/xs-checkbox",
     "description": "React checkbox, enables: user customizable icons, check/unchecked label text and return values",
     "notes": "React component enables customization of HTML form type checkbox and returns expected e.target object for controlled forms",
-    "technology": ["React", "npm", "webpack"],
+    "technology": ["React", "npm", "Webpack"],
     "sortOrder": 155
   }, {
     "name":"xs-checklist",
@@ -143,43 +150,43 @@
     "href": "https://github.com/xybersolve/xs-checklist",
     "description": "React checklist, leverage Xybersolve 'xs-checkbox' into lists of checkboxs",
     "notes": "React component enables lists of customized checkboxs (i.e, icons, labels, text and return values)",
-    "technology": ["React", "npm", "webpack"],
+    "technology": ["React", "npm", "Webpack"],
     "sortOrder": 160
   }, {
-    "name":"xybersolve.io",
+    "name":"xybersolve.com",
     "fa": "fab fa-angular",
-    "title":"xybersolve.io Angular website",
+    "title":"xybersolve.com AngularJS website",
     "href": "https://github.com/xybersolve/xybersolve.io",
     "description": "Started life as a github home page, became a docker swarm service and now is a S3 static website and deployed via jenkins. Currently, rewriting in Angular5.",
     "notes": "Gulp automation",
-    "technology": ["jenkins", "docker", "AWS", "S3", "make", "angular 1.x" ,"bootstrap 3.x", "gulp"],
+    "technology": ["Jenkins", "Docker", "AWS", "S3", "Make", "AngularJS" ,"Bootstrap 3.x", "Gulp"],
     "sortOrder": 165
   }, {
     "name":"Leads",
     "fa": "fab fa-angular",
-    "title":"Lead Management Angular app",
+    "title":"Lead Management AngularJS app",
     "href": "https://github.com/gmilligan/Leads",
     "description": "Manage and track leads.",
-    "notes": "MEAN Fullstack, Angular 1.3 features: form validation, $q, etc...",
-    "technology": ["angular 1.3" , "gulp", "bootstrap 3.x", "MEAN", "mongodb", "nodeJS", "express 4.x"],
+    "notes": "MEAN Fullstack, AngularJS features: form validation, $q, etc...",
+    "technology": ["AngularJS" , "Gulp", "Bootstrap 3.x", "MEAN", "MongoDb", "NodeJS", "Express 4.x"],
     "sortOrder": 170
   }, {
     "name":"xs-angular-cache-service",
     "fa": "fab fa-angular",
-    "title":"Angular Cache Service",
+    "title":"AngularJS Cache Service",
     "href": "https://github.com/gmilligan/xs-angular-cache-service",
     "description": "Cache service enables angular project module & session persistence. Extends angular `$cacheFactory`, using HTML5 localStorage for persistence across sessions. Stores data (primitives) or objects. Test",
     "notes": "Test: Karma & Jasmine Unit testing",
-    "technology": ["angular 1.2" , "karma", "jasmine", "grunt", "html5"],
+    "technology": ["AngularJS" , "Karma", "Jasmine", "Grunt", "HTML5"],
     "sortOrder": 175
   }, {
     "name":"xs-angular-action-buttons-directive",
     "fa": "fab fa-angular",
-    "title":"Angular Action Button Directive",
+    "title":"AngularJS Action Button Directive",
     "href": "https://github.com/gmilligan/xs-angular-action-buttons-directive",
     "description": "Easy & configurable action buttons (BootStrap), include: New, Clone, Edit & Delete. Delete has automatic confirmation mechanism. Sizable, using: (xs, sm, md & lg)",
     "notes": "Demo, Test: Protractor e2e",
-    "technology": ["angular 1.2" , "bootstrap 3.x", "protractor", "grunt"],
+    "technology": ["AngularJS" , "Bootstrap 3.x", "Protractor", "Grunt"],
     "sortOrder": 180
   }, {
     "name":"mongowrap",
@@ -188,25 +195,25 @@
     "href": "https://github.com/gmilligan/mongowrap",
     "description": "Wraps native node mongoDB driver. Provides persistent authenticated connection and generic routines useful to building RESTful interfaces",
     "notes": "",
-    "technology": ["mongodb", "node", "grunt"],
+    "technology": ["MongoDb", "NodeJS", "Grunt"],
     "sortOrder": 185
   }, {
     "name":"xs-angular-ui-components",
     "fa": "fab fa-angular",
-    "title":"Angular UI Components",
+    "title":"AngularJS UI Components",
     "href": "https://github.com/gmilligan/xs-angular-ui-components",
-    "description": "Handful of components to make it easier to build rich Angular apps.",
+    "description": "Handful of components to make it easier to build rich AngularJS apps.",
     "notes": "",
-    "technology": ["angular 1.2" , "grunt"],
+    "technology": ["AngularJS" , "Grunt"],
     "sortOrder": 190
     }, {
     "name":"xs-angular-wizard",
     "fa": "fab fa-angular",
-    "title":"Angular Wizard Widget",
+    "title":"AngularJS Wizard Widget",
     "href": "https://github.com/gmilligan/xs-angular-wizard/tree/v1.0",
-    "description": "A simple but useful Angular directive to create wizards, with automatic save button and navigable breadcrumbs buttons.",
+    "description": "A simple but useful AngularJS directive to create wizards, with automatic save button and navigable breadcrumbs buttons.",
     "notes": "Demo",
-    "technology": ["angular 1.2" , "bootstrap 3.x", "grunt"],
+    "technology": ["AngularJS" , "Bootstrap 3.x", "Grunt"],
     "sortOrder": 200
   }
 ]
