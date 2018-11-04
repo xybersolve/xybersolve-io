@@ -7,7 +7,7 @@
 # CIRCLE_BRANCH 
 # CIRCLE_SHA1 
 #
-# Must be set in CirclCI Context
+# Must be set in CirclCI Context & associated in Workflows
 # AWS_ACCESS_KEY_ID
 # AWS_SECRET_ACCESS_KEY
 # AWS_REGION
