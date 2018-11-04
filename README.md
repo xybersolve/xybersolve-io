@@ -1,16 +1,25 @@
 # xybersolve.io
 
-> Ported from AngularJS to Angular v6.   
+[![CircleCI](https://circleci.com/gh/xybersolve/xs-node-build-minimal/tree/master.svg?style=svg)](https://circleci.com/gh/xybersolve/xs-node-build-minimal/tree/master)
+
+> Xybersolve, Corp. website: ported from AngularJS to Angular v6, with some UI updates.
 
 ## Deployment
 This project has two deployment utilities, those being:
 * circleci - CI/CD deployment to S3 (prod, qa, staging, dev)
-* bash script - useful for syncing content (images, documents) without a build 
+* deploy (bash script) - usefed for syncing content (images, documents) with no build
 
-### CricleCI
+### CircleCI deployment
 Curently setup to build and deploy in 'production' on a 'release branch push.
 
-#### Bash script deploy content to to S3 static website
+Three CircleCi deployment environments (by git branch)
+* release: production build
+* develop: development build
+* qa: Quality assurance build
+
+> pushing to 'master' doesn't trigger a build
+
+#### Bash script deploy content to S3 static website
 ###### Deploy Sytnax
 
 ```sh
@@ -28,17 +37,16 @@ Curently setup to build and deploy in 'production' on a 'release branch push.
       Actions:
         --sync=<directory>: Synchronize files between project and S3
         --upload-res*: Upload newest resume
-        --upload-letter: Upload newest cover letter  
+        --upload-letter: Upload newest cover letter
         --list: List all the content
         --size: show sizes
         --delete-all: Delete all content
         --remove: Remove site bucket
 ```
 
-> `deploy` dependends on: 
+> `deploy` dependends on:
 
-* `AWS-CLI` 
+* `AWS-CLI`
 * AWS profile named `deploy` with S3 access
 * `s3api` and `s3cmd` for extended functionality
-* Static S3 website 
-
+* Static S3 website
