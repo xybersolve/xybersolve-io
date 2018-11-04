@@ -13,7 +13,7 @@ This project has two deployment utilities, those being:
 Curently setup to build and deploy in 'production' on a 'release branch push.
 
 Three CircleCi deployment environments (by git branch)
-* release: production build
+* release: production build & copy to S3 Static Website 
 * develop: development build
 * qa: Quality assurance build
 
