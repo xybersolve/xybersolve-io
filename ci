@@ -60,6 +60,9 @@ declare -r SYNTAX=$(cat <<EOF
       --help:  help and usage
       --version: show version info
 
+      --val: Validate config YAML
+      
+
 EOF
 )
 # files & directories
