@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { IImage } from '../shared/images.model'
-import { PhotographyService } from '../shared/photography.service'
+import { IImage } from '../shared/images.model';
+import { PhotographyService } from '../shared/photography.service';
 
 @Component({
   selector: 'xs-photography-gallery',
@@ -10,7 +10,7 @@ import { PhotographyService } from '../shared/photography.service'
 })
 export class PhotographyGalleryComponent implements OnInit {
   basePath: string = 'assets/image/gallery/medium-lo-res';
-  mode : string = 'fine-art'
+  mode : string = 'fine-art';
   images: IImage[] = [];
   imageId: null;
   errorMessage: string;

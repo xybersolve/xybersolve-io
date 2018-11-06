@@ -1,12 +1,13 @@
-import { TestBed } from '@angular/core/testing';
+// import { PhotographyService } from './photography.service';
 
-import { PhotographyService } from './photography.service';
+// describe('PhotographyService', () => {
+//   let photographyService: PhotographyService;
+//   beforeEach(() => {
+//     photographyService = new PhotographyService();
+//   })
 
-describe('PhotographyService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
-
-  it('should be created', () => {
-    const service: PhotographyService = TestBed.get(PhotographyService);
-    expect(service).toBeTruthy();
-  });
-});
+//   it('should return a list of images', (done) => {
+//      photographyService.getImages()
+//      done();
+//   })
+// })
