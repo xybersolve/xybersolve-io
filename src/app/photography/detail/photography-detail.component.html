@@ -1,6 +1,7 @@
 <div class='card text-center detail-outer' *ngIf='image' >
    <div class="back-button-holder">
     <button class='btn btn-link float-left detail-back-button'
+            @fadeIn
             (click)='onBack()'>
       <i class='fa fa-chevron-circle-left fa-2x' style="color:#ccc;"></i>  
       <!--  
@@ -14,14 +15,14 @@
   </button>
   </div>
   <div class="img-container" @enterLeave >
+    <a href="http://gregmilliganphotography.com" title="Go to gregmilliganphotography.com website" target="_blank">
       <img class="img-fluid img-detail text-center" src="{{basePath}}/{{image.file}}" >
+    </a>  
   </div>
-
+ 
   <div class="card-body">
-    <h2 style="color:#bbb;text-shadow:1px 1px 5px #222">{{image.title}}</h2>
-    <p style="color:#eee;text-shadow:0 0 10px #444">
-      {{image.note}}
-    </p>
+    <h2  class="image-title">{{image.title}}</h2>
+    <p class="image-note">{{image.note}}</p>
   
   </div>
 </div>
