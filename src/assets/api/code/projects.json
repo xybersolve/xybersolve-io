@@ -4,7 +4,7 @@
     "fa": "fab fab fa-angular",
     "title":"Angular v6 - xybersolve.io",
     "href": "https://github.com/xybersolve/xybersolve-io",
-    "description": "xybersolve.io Angular v6 ported from AngularJS 1.4. Updates include Angular animations",
+    "description": "xybersolve.io Angular v6 ported from AngularJS 1.4. UI enahncement include Angular animations",
     "notes": "Angular app ported from AngularJS, with UI updates. CircleCi automated build & deployment to static AWS S3 Website.",
     "technology": ["Angular", "AngularJS", "CircleCi", "AWS", "S3", "Bootstrap", "HTML5", "CSS3", "Bash"],
     "sortOrder": 80
@@ -97,8 +97,8 @@
     "title":"Node ZeroMQ - Request/Response for a NodeJS  microservices",
     "href": "https://github.com/xybersolve/xs-zeromq-req-res-rest",
     "description": "Typical intra-microservice communication using ZeroMQ, exposed as REST endpoint",
-    "notes": "Promise based request service, microservices, REST...",
-    "technology": ["NodeJS", "Docker", "microservices", "ZeroMQ", "Jenkins", "Make"],
+    "notes": "Promise based request service, microservices, REST. CircleCi & Jenkins build & deploy automation",
+    "technology": ["NodeJS", "Docker", "microservices", "ZeroMQ", "CircleCi", "Jenkins", "Make"],
     "sortOrder": 125
   }, {
     "name":"xs-zeromq-node-base",
@@ -106,8 +106,8 @@
     "title":"Node ZeroMQ - docker base image builder",
     "href": "https://github.com/xybersolve/xs-zeromq-node-base",
     "description": "ZeroMQ node base image provides node based socket communications between microservices, for lightweight collaboration",
-    "notes": "ZeroMQ node base image, consumers: req-rel, pub-sub, broker-worker microservice projects",
-    "technology": ["Docker", "NodeJS", "microservices", "ZeroMQ", "Jenkins", "Make"],
+    "notes": "ZeroMQ node base image, consumers: req-rel, pub-sub, broker-worker microservice projects. CircleCi & Jenkins build & deploy automation.",
+    "technology": ["Docker", "NodeJS", "microservices", "ZeroMQ", "CircleCi", "Jenkins", "Make"],
     "sortOrder": 130
   }, {
     "name":"terraform_data_source_modules",
