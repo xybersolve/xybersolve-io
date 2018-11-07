@@ -50,8 +50,8 @@ jobs:
       
       # unit tests
       - run:
-        name: Testing
-        command: npm run test
+          name: Testing
+          command: npm run test
       
       # build for environment
       - run: 
