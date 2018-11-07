@@ -26,20 +26,34 @@ jobs:
     
     steps:
       - checkout
+      
+      # restore if we have unchanged node mocules 
       - restore-cache:
           keys:
            - v1-dependencies-{{ checksum "package.json" }}
            - v1-dependencies-
       
+      # install node modules
       - run: 
           name: Install local dependencies - NPM modules
           command: npm install
 
+      # save node modules 
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
-
+      # lint test
+      - run:
+          name: Lint testing
+          command: npm lint 
+      
+      # unit tests
+      - run:
+        name: Testing
+        command: npm run test
+      
+      # build for environment
       - run: 
           name: Build app for production
           command: |
@@ -54,7 +68,8 @@ jobs:
                 npm run build:prod
                 ;;
             esac      
-
+      
+      # save build artifacts
       # requires: angular.json -> outputPath: dist
       #       or: ng build --prod --output-path=dist
       - save_cache:
@@ -72,10 +87,11 @@ jobs:
     working_directory: ~/xybersolve-build
     
     steps:
+      # install AWS Cli
       - run:
           name: Install awscli
           command: sudo pip install awscli
-
+      # Configure AWS Cli 
       - run:
           name: Configure AWS
           command: |
@@ -84,9 +100,11 @@ jobs:
             aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}
             aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
 
+      # pull build back from cache
       - restore-cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
-
+      
+      # deploy to S3
       - deploy:
           name: Deploy to S3
           command: |
