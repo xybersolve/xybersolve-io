@@ -46,12 +46,12 @@ jobs:
       # lint test
       - run:
           name: Lint testing
-          command: npm lint 
+          command: npm run lint 
       
       # unit tests
       - run:
           name: Testing
-          command: npm run test
+          command: npm test
       
       # build for environment
       - run: 
