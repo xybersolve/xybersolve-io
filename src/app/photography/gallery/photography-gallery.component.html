@@ -1,7 +1,7 @@
-<div class="card-columns">
- <div *ngFor="let image of images" class="card photo-holder">
+<div class="card-columns photo-holder-container">
+ <div *ngFor="let image of images" class="card photo-holder" >
     <a [routerLink]="['/photography', image.id]" >
-      <img src='{{basePath}}/{{image.file}}' class="img-ht img-fluid rounded">
+      <img src='{{basePath}}/{{image.file}}' class="img-ht img-fluid rounded photo-image" >
     </a>
  </div>
 </div>

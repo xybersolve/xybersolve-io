@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  sequence,
+  stagger,
+  group,
+  AUTO_STYLE
+} from '@angular/animations';
 
 import { IImage } from '../shared/images.model';
 import { PhotographyService } from '../shared/photography.service';
@@ -7,7 +18,24 @@ import { PhotographyService } from '../shared/photography.service';
 @Component({
   selector: 'xs-photography-detail',
   templateUrl: './photography-detail.component.html',
-  styleUrls: ['./photography-detail.component.css']
+  styleUrls: ['./photography-detail.component.css'],
+  animations:[
+    trigger('enterLeave', [
+      transition(':enter', [
+        style({opacity:0, transform: 'translateX(-100%)'}),
+        group([
+          animate('500ms ease-in-out', style({opacity:1})),
+          animate('350ms ease-in-out', style({transform: 'translateX(0%)'}))
+        ])
+      ]),
+      transition(':leave', [
+        sequence([
+          animate('350ms ease-in-out', style({transform: 'translateX(100%)'})),
+          animate('500ms ease-in-out', style({opacity: 0}))
+        ])
+      ])
+    ])
+  ]
 })
 export class PhotographyDetailComponent implements OnInit {
   pageTitle: string = 'Image Detail'

@@ -1,4 +1,4 @@
-<div class='card text-center detail-outer' *ngIf='image'>
+<div class='card text-center detail-outer' *ngIf='image' >
    <div class="back-button-holder">
     <button class='btn btn-link float-left detail-back-button'
             (click)='onBack()'>
@@ -13,7 +13,7 @@
       -->
   </button>
   </div>
-  <div class="img-container">
+  <div class="img-container" @enterLeave >
       <img class="img-fluid img-detail text-center" src="{{basePath}}/{{image.file}}" >
   </div>
 

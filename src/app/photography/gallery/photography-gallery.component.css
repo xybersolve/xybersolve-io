@@ -1,22 +1,21 @@
-.gal-item{
-	overflow: hidden;
-	padding: 8px;
-}
-.gal-item .box{
-	height: 100%;
-	overflow: hidden;
-}
-.box img{
-	height: 100%;
-	width: auto;
-	object-fit:cover;
+.photo-holder-container {
+	margin-top:0;
+	padding-top:0;
 }
 
 .photo-holder {
-  box-shadow: 0 0 10px rgba(50,50,50, .5);  
-	transition: all 0.5s;
+	border: 0;
 }
 
-.photo-holder:hover {
-	opacity: 0.75;
+.photo-image {
+	margin-top:10px;
+	transition: all 350ms;
+	box-shadow: 3px 3px 5px #aaa; 
+}
+.photo-image:hover {
+	transform: scale(1.05); 
+	box-shadow: 3px 3px 5px #ccc; 
+	background-color: '#FF34B3';
+	z-index:10;
+	overflow: visible;
 }

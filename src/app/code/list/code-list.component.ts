@@ -42,10 +42,10 @@ import { ProjectService } from '../shared/project.service';
       transition(':enter', [
         style({opacity: 0}),
         sequence([
-          animate('150ms ease', style({
+          animate('150ms ease-in-out', style({
             opacity: 1
           })),
-          animate('350ms ease', style({
+          animate('350ms ease-in-out', style({
             height: AUTO_STYLE
           })),
         ])
@@ -53,10 +53,10 @@ import { ProjectService } from '../shared/project.service';
       ]),
       transition(':leave', [
         sequence([
-          animate('150ms ease', style({
+          animate('150ms ease-in-out', style({
             opacity: 0
           })),
-          animate('350ms ease', style({
+          animate('350ms ease-in-out', style({
             height: '0px'
           })),  
         ])
