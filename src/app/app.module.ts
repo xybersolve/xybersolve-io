@@ -31,6 +31,7 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     CodeModule,
     PhotographyModule,
     AppRoutingModule,

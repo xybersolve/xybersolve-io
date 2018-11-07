@@ -8,17 +8,20 @@
         {{project.title}}
     </a>
 
-    <p *ngIf='showDetail'
+    <p @hideShowDetail
+       *ngIf='showDetail'
        class='project-detail' >
       {{project.description}}
     </p>
 
-    <p *ngIf="showDetail"
+    <p @hideShowDetail
+       *ngIf="showDetail"
        class="project-notes">
         {{project.notes}}
     </p>
     
-    <div *ngIf="showTech" class="project-technology">
+    <div @hideShowTech
+      *ngIf="showTech" class="project-technology">
       <span class="badge badge-secondary label" 
             *ngFor="let tech of project.technology">
         {{ tech | normalizeTechTerms }}

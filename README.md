@@ -1,6 +1,5 @@
 # xybersolve.io
-
-[![CircleCI](https://circleci.com/gh/xybersolve/xs-node-build-minimal/tree/master.svg?style=svg)](https://circleci.com/gh/xybersolve/xs-node-build-minimal/tree/master)
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
 > Xybersolve, Corp. website: ported from AngularJS to Angular v6, with some UI updates.
 

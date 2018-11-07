@@ -14,4 +14,9 @@
 
 .photo-holder {
   box-shadow: 0 0 10px rgba(50,50,50, .5);  
+	transition: all 0.5s;
+}
+
+.photo-holder:hover {
+	opacity: 0.75;
 }

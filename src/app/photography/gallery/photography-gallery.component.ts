@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 import { IImage } from '../shared/images.model';
 import { PhotographyService } from '../shared/photography.service';
@@ -6,7 +13,19 @@ import { PhotographyService } from '../shared/photography.service';
 @Component({
   selector: 'xs-photography-gallery',
   templateUrl: './photography-gallery.component.html',
-  styleUrls: ['./photography-gallery.component.css']
+  styleUrls: ['./photography-gallery.component.css'],
+  animations:[
+    trigger('hideShowImage', [
+      transition(':enter', [
+        style({opacity:0}),
+        animate('0.5s ease-in', style({opacity: 1}))
+      ]),
+      transition(':leave', [
+        style({opacity:1}),
+        animate('0.5s ease-out', style({opacity: 0}))
+      ])
+    ])
+  ]
 })
 export class PhotographyGalleryComponent implements OnInit {
   basePath: string = 'assets/image/gallery/medium-lo-res';

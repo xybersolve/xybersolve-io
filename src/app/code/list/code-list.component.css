@@ -12,6 +12,10 @@ ul.projects {
   margin-left: 2px;
 }
 
+ul.project > li {
+  transition: height 0.5s;
+}
+
 a.project-title {
   font-size: 14px;
   font-weight: bold;
