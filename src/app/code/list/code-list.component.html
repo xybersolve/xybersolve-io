@@ -24,8 +24,8 @@
       *ngIf="showTech" class="project-technology">
       <span class="badge badge-secondary label" 
             *ngFor="let tech of project.technology">
-          {{ tech }}  
-        <!-- {{ tech | normalizeTechTerms }} -->
+          <!-- {{ tech }} -->
+        {{ tech | normalizeTechTerms }}
       </span>
     </div>
   </li>
