@@ -20,34 +20,34 @@ import { PhotographyService } from '../shared/photography.service';
   selector: 'xs-photography-detail',
   templateUrl: './photography-detail.component.html',
   styleUrls: ['./photography-detail.component.css'],
-  animations:[
+  animations: [
     trigger('enterLeave', [
       transition(':enter', [
-        style({opacity:0, transform: 'translateX(-100%)'}),
+        style({ opacity: 0, transform: 'translateX(-100%)' }),
         group([
-          animate('500ms ease-in-out', style({opacity:1})),
-          animate('350ms ease-in-out', style({transform: 'translateX(0%)'}))
+          animate('500ms ease-in-out', style({ opacity: 1 } )),
+          animate('350ms ease-in-out', style({ transform: 'translateX(0%)' }))
         ])
       ]),
       transition(':leave', [
         sequence([
-          animate('350ms ease-in-out', style({transform: 'translateX(100%)'})),
-          animate('500ms ease-in-out', style({opacity: 0}))
+          animate('350ms ease-in-out', style({ transform: 'translateX(100%)' })),
+          animate('500ms ease-in-out', style({ opacity: 0 }))
         ])
       ])
     ]),
     trigger('fadeIn', [
       transition(':enter', [
-        style({opacity:0}),
-        animate('900ms ease-in', style({opacity:1})) 
+        style({ opacity: 0 }),
+        animate('900ms ease-in', style({ opacity: 1 })) 
       ])
     ])
   ]
 })
 export class PhotographyDetailComponent implements OnInit {
-  pageTitle: string = 'Image Detail'
-  basePath: string = 'assets/image/gallery/medium-lo-res';
-  errorMessage: string = ''
+  pageTitle = 'Image Detail';
+  basePath = 'assets/image/gallery/medium-lo-res';
+  errorMessage = '';
   image: IImage | undefined;
 
   constructor(private router: Router, 
@@ -70,6 +70,6 @@ export class PhotographyDetailComponent implements OnInit {
   }
 
   onBack(): void {
-    this.router.navigate(['/photography']) 
+    this.router.navigate(['/photography']);
   }
 }

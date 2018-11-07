@@ -5,8 +5,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./photography.component.css']
 })
 export class PhotographyComponent implements OnInit {
-  title: string = 'Image Gallery';
-  showDetail: boolean = true;
+  title = 'Image Gallery';
+  showDetail = true;
   
   constructor() { }
 

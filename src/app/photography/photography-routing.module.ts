@@ -11,10 +11,10 @@ const routes: Routes = [
   { path: 'photography/:id', 
     canActivate: [ PhotographyDetailGuard ],
     component: PhotographyDetailComponent },
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PhotographyRoutingModule {} 
+export class PhotographyRoutingModule {}

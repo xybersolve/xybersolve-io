@@ -10,7 +10,6 @@ import { NavHeaderComponent } from './nav-header/nav-header.component';
 // Page Components 
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
-import { AdminComponent } from './admin/admin.component';
 
 // Internal Modules
 import { CodeModule } from './code/code.module';
@@ -25,7 +24,6 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
     NavHeaderComponent,
     HomeComponent,  
     ContactComponent,
-    AdminComponent,
     NotFoundComponent
   ],
   imports: [

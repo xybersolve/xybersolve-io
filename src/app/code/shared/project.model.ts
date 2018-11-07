@@ -4,7 +4,7 @@ export interface IProject {
   title: string;
   href: string;
   description: string;
-  notes: string
+  notes: string;
   technology: any[];
   sortOrder: number;
 }

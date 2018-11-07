@@ -5,14 +5,14 @@ describe('NormalizeTechTermsPipe', () => {
   
   beforeEach(() => {
     pipe = new NormalizeTechTermsPipe();
-  })
+  });
 
   it('should leave uppercase acronyms as acronym', () => {
-    expect(pipe.transform('AWS')).toEqual('AWS')
+    expect(pipe.transform('AWS')).toEqual('AWS');
   });
   
   it('should change mixed case to lowercase', () => {
-    expect(pipe.transform('JavaScript')).toEqual('javascript')
+    expect(pipe.transform('JavaScript')).toEqual('javascript');
   });
 
 });

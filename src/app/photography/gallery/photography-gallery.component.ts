@@ -14,44 +14,44 @@ import { PhotographyService } from '../shared/photography.service';
   selector: 'xs-photography-gallery',
   templateUrl: './photography-gallery.component.html',
   styleUrls: ['./photography-gallery.component.css'],
-  animations:[
+  animations: [
     trigger('hideShowImage', [
       transition(':enter', [
-        style({opacity:0}),
-        animate('0.5s ease-in', style({opacity: 1}))
+        style({ opacity: 0 }),
+        animate('0.5s ease-in', style({ opacity: 1 }))
       ]),
       transition(':leave', [
-        style({opacity:1}),
-        animate('0.5s ease-out', style({opacity: 0}))
+        style({ opacity: 1 }),
+        animate('0.5s ease-out', style({ opacity: 0 }))
       ])
     ])
   ]
 })
 export class PhotographyGalleryComponent implements OnInit {
-  basePath: string = 'assets/image/gallery/medium-lo-res';
-  mode : string = 'fine-art';
+  basePath = 'assets/image/gallery/medium-lo-res';
+  // TODO: add category filter for images 
+  mode = 'fine-art';
   images: IImage[] = [];
   imageId: null;
   errorMessage: string;
-  constructor(private photographyService: PhotographyService){}
+  constructor(private photographyService: PhotographyService) {}
     
   ngOnInit(): void {
     this.photographyService.getImages().subscribe(
       images => {
         this.images = images;
         this.images = this.filterImages();
-        //this.images = this.sortImages();
         this.imageId = null;
       },
       error => this.errorMessage = <any>error 
-    )
+    );
   }
   filterImages(): IImage[] {
-    return this.images.filter(image => image.show != false)
-               .sort((a,b) => a.sort > b.sort ? 1 : -1)
+    return this.images.filter(image => image.show !== false)
+               .sort((a, b) => a.sort > b.sort ? 1 : -1);
   }
  
-  onClick() :void {
+  onClick(): void {
     console.log('got click');
   }  
 }

@@ -75,36 +75,45 @@ import { ProjectService } from '../shared/project.service';
   ]
 })
 
-export class CodeListComponent {
+export class CodeListComponent implements OnInit  {
   projects: IProject[] = [];
   filteredProjects: IProject[];
   errorMessage: string;
-  itemState: string = 'out'
+  itemState = 'out';
+
+  @Input() showTech = true;
+  @Input() showDetail = true;
+  
+  _techFilter: string;
+  @Input() get techFilter(): string {
+    return this._techFilter;
+  }
+  
+  // Capture project click  to eventually record project selection
+  @Output() projectClick: EventEmitter<string> = new EventEmitter <string>();  
+  onProjectClick(projectName: string): void {
+     console.log(`Got Project click: ${projectName}`);
+     this.projectClick.emit(projectName);
+  }
+
   constructor(private projectService: ProjectService) {}
 
   ngOnInit(): void {
     this.projectService.getProjects().subscribe(
       projects => {
-        this.projects = projects
+        this.projects = projects;
         this.filteredProjects = this.projects;  
       },  
       error => this.errorMessage = <any>error
     );
-    //this.projects = this.codeService.getProjects();
-    //this.filteredProjects = this.projects;
   } 
 
   // booleans from master control level of detail in display
-  @Input() showTech: boolean = true;
-  @Input() showDetail: boolean = true;
 
   // techFilter: from master to filter by a technology term 
   // project filtering on tech terms
   // in class method, in lieu of pipe (slower) 
-  _techFilter: string;
-  @Input() get techFilter(): string {
-    return this._techFilter;
-  }
+
   set techFilter(value: string) {
     this._techFilter = value;
     this.filteredProjects = this.techFilter ? this.filterTechTerms(this.techFilter) : this.projects;
@@ -115,15 +124,8 @@ export class CodeListComponent {
       project.technology.some((tech) => 
         tech.toLocaleLowerCase() === filterBy
       )
-    )
+    );
   }
 
-  // Capture project click  to eventually record project selection
-  @Output() projectClick: EventEmitter<string> = new EventEmitter <string>();  
-  onProjectClick(projectName: string): void {
-    console.log(`Got Project click: ${projectName}`);
-    this.projectClick.emit(projectName);
-  }
- 
  
 }

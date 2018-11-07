@@ -27,8 +27,8 @@ export class ProjectService {
   //   this.getProjects().subscribe()
   // }
 
-  private handleError(err: HttpErrorResponse){
-    let errorMessage = ''
+  private handleError(err: HttpErrorResponse) {
+    let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
       errorMessage = `An error occurred: ${err.error.message}`;
     } else {
