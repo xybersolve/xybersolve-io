@@ -9,7 +9,8 @@ import {
   sequence,
   stagger,
   group,
-  AUTO_STYLE
+  AUTO_STYLE,
+  animation
 } from '@angular/animations';
 
 import { IImage } from '../shared/images.model';
@@ -33,6 +34,12 @@ import { PhotographyService } from '../shared/photography.service';
           animate('350ms ease-in-out', style({transform: 'translateX(100%)'})),
           animate('500ms ease-in-out', style({opacity: 0}))
         ])
+      ])
+    ]),
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({opacity:0}),
+        animate('900ms ease-in', style({opacity:1})) 
       ])
     ])
   ]
