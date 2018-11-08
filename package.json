@@ -8,7 +8,7 @@
     "build:qa": "ng build --configuration=qa --output-path=dist",
     "build:stage": "ng build --configuration=stage --output-path=dist",
     "build:prod": "ng build --prod --configuration=production --output-path=dist",
-    "test": "ng test",
+    "test": "ng test --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
