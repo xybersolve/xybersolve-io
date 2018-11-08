@@ -46,14 +46,14 @@ jobs:
           paths:
             - node_modules
       # lint test
-      - run:
-          name: Lint testing
-          command: npm run lint 
+      # - run:
+      #     name: Lint testing
+      #     command: npm run lint 
       
-      # unit tests
-      - run:
-          name: Testing
-          command: npm test
+      # # unit tests
+      # - run:
+      #     name: Testing
+      #     command: npm test
       
       # build for environment
       - run: 
