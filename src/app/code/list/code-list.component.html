@@ -1,12 +1,12 @@
 <ul *ngIf='projects && projects.length' class="list-group projects">
-  <li class="list-group-item" *ngFor="let project of filteredProjects">
-    <i class="{{project.fa}}" style="margin-right:6px;"></i>
-    <a href="{{project.href}}"
-       (click)='onProjectClick(project.name)'  
-       target="_blank"
-       class="project-title">
-        {{project.title}}
-    </a>
+  <li class="list-group-item" 
+      *ngFor="let project of filteredProjects" 
+      (click)='onClick(project.href)'>
+
+      <div class="project-title">
+        <i class="{{project.fa}}" style="margin-right:6px;"></i>
+        <span>{{project.title}}</span>
+      </div>
 
     <p @hideShowDetail
        *ngIf='showDetail'
@@ -28,5 +28,6 @@
         {{ tech | normalizeTechTerms }}
       </span>
     </div>
-  </li>
+  
+  </li> 
 </ul>
