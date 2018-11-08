@@ -6,15 +6,15 @@
 ## Deployment
 This project has two deployment utilities, those being:
 * circleci - CI/CD deployment to S3 (prod, qa, staging, dev)
-* deploy (bash script) - usefed for syncing content (images, documents) with no build
+* deploy (bash script) - useed for syncing content (images, documents) with no build
 
 ### CircleCI deployment
-Curently setup to build and deploy in 'production' on a 'release branch push.
+Curently setup to build and deploy in 'production' on push to 'release' branch.
 
 Three CircleCi deployment environments (by git branch)
-* release: production build & copy to S3 Static Website 
-* develop: development build
-* qa: Quality assurance build
+* release: Production build & test, deploy to primary S3 Static Website 
+* develop: Development build & test, deploy to secondary S3 site
+* qa: Quality assurance build & test, deploy to secondary S3 site
 
 > pushing to 'master' doesn't trigger a build
 
