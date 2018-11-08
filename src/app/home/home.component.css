@@ -3,6 +3,7 @@
   float: right;
   margin-right: 10px;
   margin-bottom: 10px;
+  margin-left: 15px;
   box-shadow: 3px 3px 8px #aaa;
 }
 
@@ -16,4 +17,13 @@ ul {
 
 li {
   margin-left: 24px;
+}
+
+ul.outline-list {
+  margin-left:-2px;
+  padding-left:0;
+}
+
+ul.outline-list > li {
+  padding-top:2px;
 }
