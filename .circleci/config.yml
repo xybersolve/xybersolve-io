@@ -22,8 +22,10 @@ jobs:
     working_directory: ~/xybersolve-build
     
     docker:
-      - image: circleci/node:10.12-jessie
-    
+      - image: circleci/node:8.11.2-browsers
+      # - image: circleci/python:jessie-node-browsers
+      # - image: circleci/node:10.12-jessie
+      
     steps:
       - checkout
       
@@ -83,6 +85,7 @@ jobs:
   deploy:
     docker:
       - image: circleci/python:2.7-jessie
+      # circleci/node:8.11.2-browsers
     # - image: circleci/python:3.6.2-stretch-browsers              
     working_directory: ~/xybersolve-build
     
