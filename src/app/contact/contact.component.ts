@@ -8,6 +8,7 @@ import {
   sequence,
   stagger,
   group,
+  keyframes,
   AUTO_STYLE,
   animation
 } from '@angular/animations';
@@ -16,6 +17,7 @@ import {
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
   animations: [
+    // TODO: use keyframes - to create bounce-in from top
     trigger('locationMap', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateX(200%)' }),
