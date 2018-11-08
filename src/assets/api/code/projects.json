@@ -4,7 +4,7 @@
     "fa": "fab fab fa-angular",
     "title":"Angular v6 - xybersolve.io",
     "href": "https://github.com/xybersolve/xybersolve-io",
-    "description": "xybersolve.io Angular v6 ported from AngularJS 1.4. UI enahncement include Angular animations",
+    "description": "xybersolve.io Angular v6 ported from AngularJS 1.4. UI enahncement include Angular animations. This website.",
     "notes": "Angular app ported from AngularJS, with UI updates. CircleCi automated build & deployment to static AWS S3 Website.",
     "technology": ["Angular", "AngularJS", "CircleCi", "AWS", "S3", "Bootstrap", "HTML5", "CSS3", "Bash"],
     "sortOrder": 80
