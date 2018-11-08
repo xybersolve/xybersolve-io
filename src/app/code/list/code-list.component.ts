@@ -119,7 +119,6 @@ export class CodeListComponent implements OnInit  {
     this.filteredProjects = this.techFilter ? this.filterTechTerms(this.techFilter) : this.projects;
   }
 
-  // TODO: 
   filterTechTerms(filterBy: string): IProject[] {
     filterBy = filterBy.toLocaleLowerCase();
     return this.projects.filter((project: IProject) =>   
@@ -127,14 +126,14 @@ export class CodeListComponent implements OnInit  {
         // match (like) i.e., leading characters 
         tech.toLocaleLowerCase().slice(0, filterBy.length) === filterBy
         // match the whole word
-        //return tech.toLocaleLowerCase() === filterBy
+        // return tech.toLocaleLowerCase() === filterBy
       )
     );
   }
 
   onClick(href) {
-    console.log(`got click ${href}`)
-    window.open(href, "_blank");
-    //this.router.navigate(['/auth']);
+    console.log(`got click ${href}`);
+    window.open(href, '_blank');
+    // this.router.navigate(['/auth']);
   }
 }
